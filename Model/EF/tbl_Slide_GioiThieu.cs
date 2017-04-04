@@ -10,14 +10,16 @@ namespace Model.EF
     {
         public long id { get; set; }
 
-        [StringLength(50)]
+        [StringLength(200)]
         public string urlImage { get; set; }
 
         public bool? Active { get; set; }
 
         public int? Count_Click { get; set; }
 
-        [StringLength(50)]
+        [StringLength(200)]
         public string UrlNhac { get; set; }
+        [StringLength(200)]
+        public string Title { get; set; }
     }
 }

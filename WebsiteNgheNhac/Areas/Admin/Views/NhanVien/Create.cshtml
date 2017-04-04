@@ -1,0 +1,97 @@
+﻿@model Model.EF.tbl_NhanVien
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Layouts.cshtml";
+}
+@section header
+{
+    Nhân viên
+}
+
+@using (Html.BeginForm("Create","NhanVien",FormMethod.Post)) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Thêm mới nhân viên</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.tenNV, htmlAttributes: new { @class = "col-md-2" })
+            <div class="col-md-5">
+                @Html.TextBoxFor(model => model.tenNV,  new { @class = "form-control" } )
+                @Html.ValidationMessageFor(model => model.tenNV, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NgaySinh, htmlAttributes: new { @class = " col-md-2" })
+            <div class="col-md-5">
+                @Html.TextBoxFor(model => model.NgaySinh,  new { @class = "form-control",@type="date" } )
+                @Html.ValidationMessageFor(model => model.NgaySinh, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.gioitinh, htmlAttributes: new { @class = "col-md-2" })
+            <div class="col-md-5">
+               Nam @Html.RadioButton("gioitinh","Nam",new {  @checked= "checked"})
+                Nữ @Html.RadioButton("gioitinh", "Nữ")
+                @Html.ValidationMessageFor(model => model.gioitinh, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ChucVu, htmlAttributes: new { @class = " col-md-2" })
+            <div class="col-md-5">
+                @Html.DropDownList("ChucVu", new SelectList(ViewBag.listChucvu, "Value", "Text"), "selected", new { @class= "form-control" })
+                @Html.ValidationMessageFor(model => model.ChucVu, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Id_Quyen, htmlAttributes: new { @class = " col-md-2" })
+            <div class="col-md-5">
+
+                @Html.DropDownList("Id_Quyen", new SelectList(ViewBag.ListQuyen, "Id", "TenQuyen"),new { @class="form-control"} )
+                @Html.ValidationMessageFor(model => model.Id_Quyen, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "col-md-2" })
+            <div class="col-md-5">
+                @Html.TextBoxFor(model => model.UserName,new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "col-md-2" })
+            <div class="col-md-5">
+                @Html.PasswordFor(model => model.Password, new { @class = "form-control" } )
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "col-md-2" })
+            <div class="col-md-5">
+                <div class="checkbox">
+                    @Html.CheckBoxFor(model => model.Status,new { @style="margin-left:2px;" })
+                    @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Thêm mới" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

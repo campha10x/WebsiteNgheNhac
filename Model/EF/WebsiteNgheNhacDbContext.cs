@@ -24,7 +24,7 @@ namespace Model.EF
         public virtual DbSet<tbl_TheLoai> tbl_TheLoai { get; set; }
         public virtual DbSet<tbl_TinTuc> tbl_TinTuc { get; set; }
         public virtual DbSet<tbl_Video> tbl_Video { get; set; }
-
+        public virtual DbSet<tbl_Menu> tbl_Menu { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<tbl_Album>()
@@ -34,6 +34,9 @@ namespace Model.EF
 
             modelBuilder.Entity<tbl_BaiHat>()
                 .Property(e => e.url_BaiHat)
+                .IsUnicode(false);
+            modelBuilder.Entity<tbl_BaiHat>()
+                .Property(e => e.url_Image)
                 .IsUnicode(false);
 
             modelBuilder.Entity<tbl_CaSi>()
@@ -49,6 +52,9 @@ namespace Model.EF
                 .WithOptional(e => e.tbl_CaSi)
                 .HasForeignKey(e => e.Id_CaSi);
 
+            modelBuilder.Entity<tbl_Menu>()
+                .HasKey(e => e.ID);
+
             modelBuilder.Entity<tbl_CaSi>()
                 .HasMany(e => e.tbl_Video)
                 .WithOptional(e => e.tbl_CaSi)
@@ -62,6 +68,9 @@ namespace Model.EF
                 .HasMany(e => e.tbl_BaiHat)
                 .WithOptional(e => e.tbl_ChuDe)
                 .HasForeignKey(e => e.Id_ChuDe);
+            modelBuilder.Entity<tbl_ChuDe>()
+                .Property(f => f.Id)
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
 
             modelBuilder.Entity<tbl_ChuDe>()
                 .HasMany(e => e.tbl_Video)

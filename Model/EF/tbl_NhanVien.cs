@@ -15,7 +15,8 @@
             tbl_Video = new HashSet<tbl_Video>();
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        //[DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public long Id { get; set; }
 
         [StringLength(50)]
@@ -24,8 +25,8 @@
 
         [Column(TypeName = "date")]
         [Display(Name ="Ngày sinh")]
-        //[DisplayFormat(ApplyFormatInEditMode =true,DataFormatString ="{0:yyyy-MM-dd}")]
         [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/mm/yyyy}")]
         public DateTime? NgaySinh { get; set; }
 
         [StringLength(50)]
@@ -46,7 +47,6 @@
         [StringLength(50)]
         [Display(Name ="Mật khẩu")]
         public string Password { get; set; }
-        
         [Display(Name ="Trạng thái")]
         public bool Status { get; set; }
         public virtual tbl_Quyen tbl_Quyen { get; set; }

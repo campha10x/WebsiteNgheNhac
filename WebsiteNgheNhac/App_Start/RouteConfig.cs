@@ -13,11 +13,19 @@ namespace WebsiteNgheNhac
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+
+            routes.MapRoute(
+               name: "ChiTietNhac",
+               url: "bang-xep-hang/{action}-{id}",
+               defaults: new { controller = "NgheNhac", action = "Index", id = UrlParameter.Optional }
+           );
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
         }
     }
 }

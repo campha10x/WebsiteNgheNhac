@@ -28,7 +28,6 @@ namespace Model.EF
 
         public string TrinhDoHocVan { get; set; }
 
-        [StringLength(10)]
         public string MoTaSuNghiep { get; set; }
 
         public string urlImage { get; set; }

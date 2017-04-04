@@ -15,6 +15,8 @@ namespace Model.EF
 
         public string url_BaiHat { get; set; }
 
+        public string url_Image { get; set; }
+
         public int? LuotNghe { get; set; }
 
         public int? LuotTai { get; set; }
@@ -28,6 +30,7 @@ namespace Model.EF
         public long? Id_ChuDe { get; set; }
 
         public long? Id_Album { get; set; }
+
 
         public virtual tbl_Album tbl_Album { get; set; }
 

@@ -8,7 +8,7 @@ namespace Model.EF
 
     public partial class tbl_Video
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+
         public long Id { get; set; }
 
         [StringLength(50)]
@@ -32,7 +32,7 @@ namespace Model.EF
         [Column(TypeName = "date")]
         public DateTime? NgayDang { get; set; }
 
-        [StringLength(50)]
+        [StringLength(200)]
         public string urlImage { get; set; }
 
         public virtual tbl_CaSi tbl_CaSi { get; set; }

@@ -29,7 +29,7 @@ namespace WebsiteNgheNhac.Areas.Admin.Controllers
                     userSession.UserName = user.UserName;
                     userSession.Id = user.Id;
                     Session.Add(CommonConstants.USER_SESSION, userSession);
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Create", "TinTuc");
                 }
                 else if (result == 0)
                 {

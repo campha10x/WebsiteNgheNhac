@@ -1,0 +1,41 @@
+﻿
+@{
+    var ListTopBaiHat = (List<Model.ViewModel.BaiHat_CaSiModel>)ViewBag.BaiHatTop;
+    int i = 1;
+}
+<div id="bxhSong" class="keeng-playlist keeng-bxh">
+    <h2 class="keeng-title-h2">
+       
+        <a href="#">BXH BÀI HÁT VIỆT NAM</a>
+    </h2>
+    @{
+
+        foreach (var item in ListTopBaiHat)
+        {
+            <div class="ka-content">
+                <a href="@Url.Action("Index","NgheNhac",new { @Id=item.Id})" class="ka-lnk">
+                    <img src="@item.urlImage" />
+                    <span class="number-no">@i</span>
+                </a>
+                <div class="ka-info">
+                    <h3 class="ka-info-h3">
+                        <a href="@Url.Action("Index","NgheNhac",new { @Id=item.Id})">@item.TenBaiHat</a>
+                    </h3>
+                    <p class="ka-info-singer">
+                        <a href="#">@item.NgheDanh</a>
+                    </p>
+                    <span class="ka-info-view">
+                        <img src="~/asset/client/images/TrangChu/ver3_09_b.png" height="10" />
+                        @item.LuotNghe
+                    </span>
+                </div>
+            </div>
+            i++;
+        }
+    }
+
+    <p class="p-view-all">
+        <a class="lnk-view-all" href="#">Nghe tất cả</a>
+    </p>
+</div>
+

@@ -1,0 +1,230 @@
+﻿@model List<Model.ViewModel.Video_CaSiModel>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var slides = (List<Model.EF.tbl_Slide_GioiThieu>)ViewBag.SlideGioiThieu;
+    int i = 0;
+}
+<div class="container slide">
+    <div class="col-md-8 ">
+        <div class="regular slider">
+            @foreach (var item in slides)
+            {
+                <a href="@item.UrlNhac">
+                    <img src="@item.urlImage" title="@item.Title"  width="100%" />
+                </a>
+            }
+        </div>
+        <div class="app-keeng ">
+            <a href="#">
+                <img src="~/asset/client/images/TrangChu/ver3_04.png" />
+            </a>
+            <a href="#">
+                <img src="~/asset/client/images/TrangChu/ver3_05.png" />
+            </a>
+            <a href="#">
+                <img src="~/asset/client/images/TrangChu/ver3_06.png" />
+            </a>
+            <a href="#">
+                <img src="~/asset/client/images/TrangChu/ver3_07.png" />
+            </a>
+        </div>
+        <div class="advanteds">
+            <a href="#">
+                <img src="~/asset/client/images/TrangChu/SlsVuGMXRFBfVBiWN4V458981bd4772c0.jpg" width="100%" />
+            </a>
+        </div>
+      
+        <div class="keeng-news">
+            <h2 class="keeng-title-h2">CẢM XÚC ÂM NHẠC</h2>
+            <div class="wrap-keeng-news">
+                <div class="col-md-6 keeng-news-left">
+                    <a href="#">
+                        <img src="~/asset/client/images/TrangChu/a3uQw0KQLDJ5v8TmtAEy58ae4584a165b.jpg" width="100%" />
+                    </a>
+                </div>
+                <div class="col-md-6 keeng-news-right">
+                    <h3 class="news-right-h3">
+                        <a href="#" title="Hôm nay em mệt, cả vũ trụ chỉ toàn người lạ, bình yên may chỉ có anh…">
+                            Hôm nay em mệt, cả vũ trụ chỉ toàn người lạ, bình yên may chỉ có anh…
+                        </a>
+                    </h3>
+                    <p class="news-right-p">
+                        Hôm nay em mệt rã rời, chỉ muốn về nhà nấu cho anh bữa tối, rồi cùng xem một bộ phim cho đến khi em ngủ thiếp đi trong vòng tay anh…
+                    </p>
+                    <ul class="news-right-ul">
+                        <li>
+                            <a href="#">Đôi khi hãy đi thật xa, để biết người ấy có đủ yêu mà giữ em ở lại hay không</a>
+                        </li>
+                        <li>
+                            <a href="#">Khi chọn sự cô độc, chẳng phải vì người ta thích cô đơn</a>
+                        </li>
+                        <li>
+                            <a href="#">Mình cứ yêu thôi, chỉ cần là em là đủ rồi</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--Box nhac hot-->
+        <div class="keeng-all-music">
+            <a href="#">
+                <h2 class="keeng-title-h2">NHẠC HOT</h2>
+            </a>
+            <div class="all-music-wrap">
+                @foreach (var item in Model)
+                {
+                    <div id="box-home-hot-@i" class="col-md-6">
+                        <div class="keeng-video">
+                            <div class="kv-content">
+                                <a class="kv-lnk" href="#">
+                                    <img class="kv-img" src="@item.urlImage" />
+                                    <span class="kv-sp-icon">
+                                        <img class="kv-img-icon" src="~/asset/client/images/TrangChu/ver3_08.png" />
+                                    </span>
+                                </a>
+
+                                <div class="kv-info">
+                                    <h3 class="kv-info-h3">
+                                        <a href="#">@item.Ten_Video</a>
+                                    </h3>
+                                    <p class="kv-info-p">
+                                        <a class="kv-info-singer">@item.NgheDanh</a>
+                                        <span class="kv-info-view">
+                                            <img src="~/asset/client/images/TrangChu/ver3_09.png" height="10" /> 779.824
+                                        </span>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="keeng-social">
+                                <a class="ks-like">
+                                    THÍCH
+                                    <span id="keeng-video-like-229705">3272</span>
+                                </a>
+                                <a class="ks-comment">
+                                    BÌNH LUẬN
+                                    <span id="keeng-video-comment-229705">12377</span>
+                                </a>
+                            </div>
+                            <div class="keeng-album">
+                                <div class="ka-content">
+                                    <a class="ka-lnk">
+                                        <img src="~/asset/client/images/TrangChu/ktXG1Wq00bmY2MlT3SQt58ae51cab5c33_103_103.jpg" title="Remix Collection 2017" alt="Remix Collection 2017" />
+                                    </a>
+                                    <div class="ka-info">
+                                        <h3 class="ka-info-h3">
+                                            <a href="#">Remix Collection 2017</a>
+                                        </h3>
+                                        <p class="ka-info-singer">
+                                            <a href="#"> Dương Nhất Linh</a>
+                                        </p>
+                                        <span class="ka-info-view">
+                                            <img src="~/asset/client/images/TrangChu/ver3_09_b.png" height="10" />  140.225
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="keeng-social">
+                                    <a class="ks-like">
+                                        THÍCH
+                                        <span id="keeng-video-like-229705">3272</span>
+                                    </a>
+                                    <a class="ks-comment">
+                                        BÌNH LUẬN
+                                        <span id="keeng-video-comment-229705">12377</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="keeng-album audio-content">
+                                <div class="ka-content">
+                                    <a class="ka-lnk">
+                                        <img src="~/asset/client/images/TrangChu/ktXG1Wq00bmY2MlT3SQt58ae51cab5c33_103_103.jpg" title="Remix Collection 2017" alt="Remix Collection 2017" />
+                                    </a>
+                                    <div class="ka-info" style="top: -3px;left: 42px;">
+                                        <h3 class="ka-info-h3">
+                                            <a href="#">Để Cho Em Khóc (Vali Tình Yêu OST)</a>
+                                        </h3>
+                                        <p class="ka-info-singer" style="display: inline-block;">
+                                            <a href="#">Vy Oanh</a>
+                                        </p>
+                                        <span class="ka-info-view">
+                                            <img src="~/asset/client/images/TrangChu/ver3_09_b.png" height="10" />    229.975
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="keeng-social">
+                                    <a class="ks-like">
+                                        THÍCH
+                                        <span id="keeng-video-like-229705">3272</span>
+                                    </a>
+                                    <a class="ks-comment">
+                                        BÌNH LUẬN
+                                        <span id="keeng-video-comment-229705">12377</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    i++;
+                        <div class="clear-fix"></div>
+                        }
+              
+                <p class="p-view-all col-md-12">
+                    <a class="lnk-view-all" href="#">
+                        <img src="~/asset/client/images/TrangChu/ver3_12.png" height="7" />
+                    </a>
+                </p>
+            </div>
+        </div>
+        <div class="keeng-news">
+            <h2 class="keeng-title-h2">
+                <a href="#">KEENG BLOG</a>
+            </h2>
+            <div class="wrap-keeng-news">
+                <div class="col-md-6">
+                    <a class="news-left-lnk" href="#">
+                        <img src="~/asset/client/images/TrangChu/cYzkk0cEYDI8HWqefTpO58b126d5ecf2d.JPG" class="news-left-img" alt="Trang Pháp kể chuyện Sam 'gài bẫy' để 'cướp' Tim khỏi Trương Quỳnh Anh" />
+                    </a>
+                </div>
+                <div class="col-md-6">
+                    <h3 class="news-right-h3">
+                        <a href="#" title="Trang Pháp kể chuyện Sam 'gài bẫy' để 'cướp' Tim khỏi Trương Quỳnh Anh">
+                            Trang Pháp kể chuyện Sam 'gài bẫy' để 'cướp' Tim khỏi Trương Quỳnh Anh
+                        </a>
+                    </h3>
+                    <p class="news-right-p">
+                        Tiếp tục khẳng định thương hiệu Nữ hoàng nhạc phim, Trang Pháp chính thức giới thiệu MV Nếu thời gian trở lại - ca khúc chính trong bộ phim Linh Duyên vừa ra rạp.
+                    </p>
+                    <ul class="news-right-ul">
+                        <li>
+                            <a href="#">
+                                MV đạt 100 triệu view của làng nhạc Việt chỉ 'đếm trên đầu ngón tay'!
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                MV 'Chúng ta không thuộc về nhau' của Sơn Tùng chính thức vượt mốc 100 triệu view
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                FA cả nước ghen tị với FA Hà Nội vì điều này
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="clear-fix">
+        </div>
+        <div id="facebookbox">
+            <div class="fb-like"
+                 data-href="https://www.facebook.com"
+                 data-layout="standard"
+                 data-action="like"
+                 data-show-faces="true">
+            </div>
+        </div>
+    </div>
+
+

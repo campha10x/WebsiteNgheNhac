@@ -1,0 +1,151 @@
+﻿@{
+    var lst_TheLoai = (List<Model.EF.tbl_TheLoai>)ViewBag.ListTheLoai;
+}
+<div class="col-md-4">
+    <div class="banner-wap banner-left-web">
+        <a href="#">
+            <img src="~/asset/client/images/TrangChu/Z8HcVJmpCVGtC5kgOPTH58abaa7f395ed.jpg" alt="anh2" class="news-left-img" />
+        </a>
+    </div>
+    <!---Box BXH-->
+        @if (String.Compare(@HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString(), "TrangChu") == 0)
+        {  
+             @Html.Partial("~/Views/Shared/PageBxHBaihat.cshtml")
+        }
+
+    <!--Box chu de-->
+    <div id="keengTopicsHome" class="keeng-playlist keeng-topic">
+        <div>
+            <h2 class="keeng-title-h2">CHỦ ĐỀ</h2>
+            <div class="ka-content">
+                <a class="ka-lnk" href="#">
+                    <img src="~/asset/client/images/TrangChu/73a633bdae2326c606011955169254b46fdb4856.jpg" title="Ngày Gió Mùa Về">
+                </a>
+                <div class="ka-info">
+                    <h3 class="ka-info-h3">
+                        <a href="#">
+                            Ngày Gió Mùa Về
+                        </a>
+                    </h3>
+                    <span class="ka-info-view">
+                        20 Bài hát | 9 Video | 0 Album
+                    </span>
+                </div>
+            </div>
+            <div class="ka-content">
+                <a class="ka-lnk" href="#">
+                    <img src="~/asset/client/images/TrangChu/73a633bdae2326c606011955169254b46fdb4856.jpg" title="Ngày Gió Mùa Về">
+                </a>
+                <div class="ka-info">
+                    <h3 class="ka-info-h3">
+                        <a href="#">
+                            Ngày Gió Mùa Về
+                        </a>
+                    </h3>
+                    <span class="ka-info-view">
+                        20 Bài hát | 9 Video | 0 Album
+                    </span>
+                </div>
+            </div>
+            <div class="ka-content">
+                <a class="ka-lnk" href="#">
+                    <img src="~/asset/client/images/TrangChu/73a633bdae2326c606011955169254b46fdb4856.jpg" title="Ngày Gió Mùa Về">
+                </a>
+                <div class="ka-info">
+                    <h3 class="ka-info-h3">
+                        <a href="#">
+                            Ngày Gió Mùa Về
+                        </a>
+                    </h3>
+                    <span class="ka-info-view">
+                        20 Bài hát | 9 Video | 0 Album
+                    </span>
+                </div>
+            </div>
+            <div class="ka-content">
+                <a class="ka-lnk" href="#">
+                    <img src="~/asset/client/images/TrangChu/73a633bdae2326c606011955169254b46fdb4856.jpg" title="Ngày Gió Mùa Về">
+                </a>
+                <div class="ka-info">
+                    <h3 class="ka-info-h3">
+                        <a href="#">
+                            Ngày Gió Mùa Về
+                        </a>
+                    </h3>
+                    <span class="ka-info-view">
+                        20 Bài hát | 9 Video | 0 Album
+                    </span>
+                </div>
+            </div>
+            <div class="ka-content">
+                <a class="ka-lnk" href="#">
+                    <img src="~/asset/client/images/TrangChu/73a633bdae2326c606011955169254b46fdb4856.jpg" title="Ngày Gió Mùa Về">
+                </a>
+                <div class="ka-info">
+                    <h3 class="ka-info-h3">
+                        <a href="#">
+                            Ngày Gió Mùa Về
+                        </a>
+                    </h3>
+                    <span class="ka-info-view">
+                        20 Bài hát | 9 Video | 0 Album
+                    </span>
+                </div>
+            </div>
+        </div>
+        <p class="more-keeng-view">
+            <a href="#">
+                <img src="~/asset/client/images/TrangChu/ver3_12.png" />
+            </a>
+        </p>
+    </div>
+    <div class="keeng-cate">
+        <h2 class="keeng-title-h2">
+            <a href="#">THỂ LOẠI</a>
+        </h2>
+        <ul id="body3" class="bc-ul">
+            @foreach (var item in lst_TheLoai)
+            {
+                <li>
+                    <a href="#">@item.Ten_TheLoai</a>
+                </li>
+            }
+        </ul>
+    </div>
+    <div id="footer">
+        <p>
+            <strong> Mạng xã hội âm nhạc Keeng.vn</strong>
+        </p>
+        <p>
+            Cơ quan chủ quản: Công ty Truyền thông Viettel (Viettel Media)<br>
+            Giấy phép: Số 217/GXN-TTĐT do Cục QL Phát Thanh Truyền Hình và TTĐT cấp ngày 28/12/2011
+        </p>
+        <a href="#">Thông tin Keeng</a>-
+        <a href="#">Quy định sử dụng</a>
+        <br>
+        <a href="#">Báo lỗi</a>
+        - Chăm sóc khách hàng: 198 (Miễn phí) <br>
+        <a class="advertising" href="#"> Liên hệ quảng cáo: 0969.16.17.18 </a><br>
+        <i class="advertising">
+            Email:
+            <a href="#" class="advertising">trangtt1@viettel.com.vn</a>
+        </i>
+    </div>
+    <div class="wrap-cate-radio wrap-home-radio">
+        <a class="cate-radio-item" href="#">
+            <img src="~/asset/client/images/TieuDeKoDoi/mocha.png" alt="mocha" height="40" />
+        </a>
+        <a class="cate-radio-item" href="#">
+            <img src="~/asset/client/images/TieuDeKoDoi/onbox_logo100.png" alt="mocha" height="40" />
+        </a>
+        <a class="cate-radio-item" href="#">
+            <img src="~/asset/client/images/TieuDeKoDoi/onvideo_logo100.png" alt="mocha" height="40" />
+        </a>
+        <a class="cate-radio-item" href="#">
+            <img src="~/asset/client/images/TieuDeKoDoi/songkhoe_logo100.png" alt="mocha" height="40" />
+        </a>
+        <a class="cate-radio-item" href="#">
+            <img src="~/asset/client/images/TieuDeKoDoi/tiin_logo100.png" alt="mocha" height="40" />
+        </a>
+    </div>
+</div>
