@@ -1,0 +1,79 @@
+﻿
+@{
+    ViewBag.Title = "ChiTietVideo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    <div class="col-md-8">
+        <div style="background:#01141a none repeat scroll 0 0">
+            <div class="info-keeng-player">
+                <h1 class="info-player-h1">
+                    <span> Trò Đùa Của Tạo Hóa (Lô Tô OST)</span>
+                    <a class="info-player-singer" id="video_singer">- Bùi Anh Tuấn</a>
+                </h1>
+                <p class="info-player-p">
+                    <span class="show_web">
+                        Đăng bởi:
+                        <span id="author"> 1673***361 </span>
+                        &nbsp;|&nbsp; Thể loại:
+                        <span id="cat_name"> Nhạc Phim</span>
+                    </span>
+                    Lượt xem
+                    <span id="video_listen"> 87.018</span>
+                </p>
+            </div>
+            <div>
+
+            </div>
+            <video id="example_video_1" class="video-js vjs-default-skin" controls preload="none" width="730" height="385"
+                   poster="http://video-js.zencoder.com/oceans-clip.png"
+                   data-setup="{}">
+                <source src="~/asset/client/Audio_Video/Video/Chuc Chong Ngu Ngon.mp4" type='video/mp4' />
+                <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+            </video>
+        </div>
+        <div class="player-social">
+            <div class="player-social-left show_web">
+                <div class="like-keeng social-keeng-like">
+                    <a href="#" class="add-favourite like-button popup">Thích</a>
+                    <span class="likecount"></span>
+                </div>
+                <div class="like-keeng social-keeng-share">
+                    <a href="#" title="Chia sẻ" class="like-button">Chia sẻ</a>
+                    <span class="likecount"></span>
+                </div>
+                <div class="like-keeng social-keeng-fb">
+                    <!-- <div class="fb-save" data-uri="https://www.facebook.com/Keeng.vn/?fref=ts" data-size="small"></div> -->
+                </div>
+            </div>
+            <div class="div-player-social">
+                <a class="add-more lnk-player-social">
+                    <img src="~/asset/client/images/TrangChu/ver3_20.png" height="25px" />
+                </a>
+                <ul class="ul-player-social">
+                    <li>
+                        <a href="#">Đăng ký VIP</a>
+                    </li>
+                    <li>
+                        <a href="#">Quà tặng âm nhạc</a>
+                    </li>
+                    <li>
+                        <a href="#">Cài nhạc chờ (3000đ)</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="player-social-right">
+                <a href="#">
+                    <img height="25" src="~/asset/client/images/TrangChu/web_ver3_17.png" class="lnk-player-social popup-download-song" />
+                </a>
+            </div>
+        </div>
+        <div id="web_vt_banner_player_detail" class="banner-wap banner-left-web">
+            <a href="#">
+                <img src="~/asset/client/images/ChiTietVideo/4NgiEQ3CaJsjWUTUKdRp58e1ee9f91279.jpg" height="93"/>
+            </a>
+        </div>
+    </div>
+
+
+

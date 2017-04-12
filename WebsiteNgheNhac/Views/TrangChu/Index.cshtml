@@ -1,8 +1,8 @@
-﻿@model List<Model.ViewModel.Video_CaSiModel>
+﻿@model IEnumerable<Model.ViewModel.Video_CaSiModel>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    var slides = (List<Model.EF.tbl_Slide_GioiThieu>)ViewBag.SlideGioiThieu;
+     var  slides = (List<Model.EF.tbl_Slide_GioiThieu>)ViewBag.SlideGioiThieu;
     int i = 0;
 }
 <div class="container slide">
@@ -226,5 +226,8 @@
             </div>
         </div>
     </div>
+    @section jsFooter{
+        <script src="/asset/client/js/controller/DangNhap.js"></script>
+    }
 
-
+   

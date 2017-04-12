@@ -6,7 +6,6 @@
     var lst_BaiHatTop = (List<Model.ViewModel.BaiHat_CaSiModel>)ViewBag.BaiHatTop;
     int i = 1;
 }
-
 <div class="container ">
     <div class="col-md-8">
         <div class="keeng-info-rank">
@@ -126,13 +125,13 @@
                     @foreach (var item in lst_BaiHatTop)
                     {
                         <div class="ka-content">
-                            <a href="@Url.Action("Index","NgheNhac",new { @Id=item.Id})" class="ka-lnk">
+                            <a href="@Url.Action("Index", "NgheNhac", new { @Id = item.Id })" class="ka-lnk">
                                 <img src="@item.urlImage" />
                                 <span class="number-no">@i</span>
                             </a>
                             <div class="ka-info">
                                 <h3 class="ka-info-h3">
-                                    <a href="@Url.Action("Index","NgheNhac",new { @Id=item.Id})">@item.TenBaiHat</a>
+                                    <a href="@Url.Action("Index", "NgheNhac", new { @Id = item.Id })">@item.TenBaiHat</a>
                                 </h3>
                                 <p class="ka-info-singer">
                                     <a href="#">@item.NgheDanh</a>
@@ -143,8 +142,8 @@
                                 </span>
                             </div>
                         </div>
-                        i++;  
-
+                        i++;
+                    }
 
                         @*<li class="jp-playlist-current">
                             <div class="keeng-album">

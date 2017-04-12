@@ -16,5 +16,6 @@ namespace Model.ViewModel
         public DateTime? NgayDang { get; set; }
         public string urlImage { get; set; }
         public string NgheDanh { get; set; }
+        public string Message { get; set; }
     }
 }

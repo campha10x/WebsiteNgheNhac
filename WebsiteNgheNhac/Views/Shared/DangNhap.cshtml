@@ -1,0 +1,84 @@
+﻿
+<div style="border-right:1px solid #000000; height:25px; margin-right:73px; height:36px;">
+    <img src="~/asset/client/images/TieuDeKoDoi/1491343166_icons_user2.png" style="margin-left: 45px;" />
+    @*<a href="#" class="login overlayLink-login">
+        Đăng nhập
+    </a>*@
+        
+     
+        @if (Session["TaiKhoan"] != null)
+        {
+            <a href="#" class="login overlayLink-login">@Session["TaiKhoan"]</a>
+                                                                                 
+        }
+       @if (Session["TaiKhoan"] == null)
+       {
+        <a href="#" class="login overlayLink-login">  Đăng nhập </a>
+       } 
+</div>
+<div class="overlay-login" style="display:none" ;>
+    <div class="login-wrapper">
+        <div class="login-content">
+            <a class="close close-login">x</a>
+            <h3>Đăng nhập</h3>
+            <hr />
+            <div style="border-right:1px solid #f0f0f0; width:65%; float:left; font-size:13px;">
+                    @*@using (Html.BeginForm("DangNhap", "TrangChu", FormMethod.Post))
+                    {*@
+                        <div class="form-group">
+                            <div class="row">
+                                <label for="username" class="col-md-3">Tên đăng nhập</label>
+                                <div class="col-md-8">
+                                    @Html.TextBox("txttaikhoan",Request.Cookies["TaiKhoan"] ==null ? string.Empty: Request.Cookies["TaiKhoan"].Value as string ,htmlAttributes: new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <label for="password" class="col-md-3">Mật khẩu</label>
+                                <div class="col-md-8">
+                                    @Html.TextBox("txtPassword", Request.Cookies["Password"] ==null ? string.Empty: Request.Cookies["Password"].Value as string ,htmlAttributes: new { @class = "form-control",@type="password"})
+                                    @*<input type="password" class="form-control " name="txtmatkhau" id="txtPassword" />*@
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-3">
+                                </div>
+                                <div class="col-md-3">
+                                    @*<input id="rememberpass" type="checkbox" />*@
+                                    @Html.CheckBox("ckbRemember",false)
+                                    <label for="checkbox" >Nhớ mật khẩu</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <label id="lblError">@ViewData["Message"]</label >
+                                </div >
+                            </div >
+                        </div >
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-3"></div>
+                                <div class="col-md-8">
+                                    <button type = "submit" class="btn btn-primary" id ="btnSubmit" style="width:100%;">ĐĂNG NHẬP</button>
+                                </div>
+                            </div>
+                        </div>
+                    @*}*@
+            </div>
+            <div style="width:35%; float:left; ">
+                <div style="margin-left:30px; margin-top:50px;">
+                    <div class="row">
+                        <img src="~/asset/client/images/TieuDeKoDoi/1491342558_square-facebook.png" />
+                        <a href="#">Đăng nhập qua Facebook</a>
+                    </div>
+                    <div class="row" style="margin-top:10px;">
+                        <img src="~/asset/client/images/TieuDeKoDoi/1491342699_square-google-plus.png" />
+                        <a href="#">Đăng nhập qua Google+</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

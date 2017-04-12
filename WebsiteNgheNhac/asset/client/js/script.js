@@ -1,4 +1,4 @@
-function initPlayer()
+﻿function initPlayer()
 {
 	var mytrack=document.getElementById('mytrack');
 	var playButton=document.getElementById('playbutton');
@@ -108,31 +108,38 @@ window.onload = initPlayer;
 
 
 //Popup Login
-$(document).ready(function() {
-    $("#loginLink").click(function( event ){
-        event.preventDefault();
-        $(".overlay").fadeToggle("fast");
-    });
+$(document).ready(function () {
+
+   
+    //$(".overlayLink-signin").click(function(event){
+    //    event.preventDefault();
+    //    $(".overlay-signin").fadeToggle("fast");
+    //});
 	
-    $(".overlayLink").click(function(event){
-        event.preventDefault();
-        var action = $(this).attr('data-action');
-		
-        $.get( "ajax/" + action, function( data ) {
-            $( ".login-content" ).html( data );
-        });	
-		
-        $(".overlay").fadeToggle("fast");
-    });
+    //$(".close-signin").click(function () {
+    //    $(".overlay-signin").fadeToggle("fast");
+    //});
 	
-    $(".close").click(function(){
-        $(".overlay").fadeToggle("fast");
-    });
-	
-    $(document).keyup(function(e) {
-        if(e.keyCode == 27 && $(".overlay").css("display") != "none" ) { 
+    //$(document).keyup(function(e) {
+    //    if (e.keyCode == 27 && $(".overlay-signin").css("display") != "none") {
+    //        event.preventDefault();
+    //        $(".overlay-signin").fadeToggle("fast");
+    //    }
+    //});
+    
+        $(".overlayLink-login").click(function (event) {
             event.preventDefault();
-            $(".overlay").fadeToggle("fast");
-        }
-    });
+            $(".overlay-login").fadeToggle("fast");
+        });
+
+        $(".close-login").click(function () {
+            $(".overlay-login").fadeToggle("fast");
+        });
+
+        $(document).keyup(function (e) {
+            if (e.keyCode == 27 && $(".overlay-login").css("display") != "none") {
+                event.preventDefault();
+                $("overlay-login").fadeToggle("fast");
+            }
+        });
 });
