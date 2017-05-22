@@ -1,0 +1,106 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml"; 
+    List<Model.EF.tbl_TinTuc> getTinTuc = (List<Model.EF.tbl_TinTuc>)ViewBag.GetTinTuc;
+    List<Model.EF.tbl_TinTuc> ListTinTuc = (List<Model.EF.tbl_TinTuc>)ViewBag.ListTinTuc; 
+}
+
+
+<div class="container">
+    <div class="col-md-8">
+        <div class="keeng-detail-news">
+            <h1 class="kdn-h1">
+                @Html.Raw(@getTinTuc[0].TieuDe)
+                @*Tháng 5 về, em hãy cứ rũ bỏ nỗi buồn mà thảnh thơi đi tìm hạnh phúc mới*@
+            </h1>
+            <div class="kdn-social">
+                <div class="kdn-fb">
+                    <div class="fb-like" data-href="" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+                </div>
+            </div>
+            <div class="kdn-content">
+                <p>
+                   @* <strong>Đã đến lúc gác lại chuyện xưa, trên đường đời trải đầy những nụ hoa, luôn có một nụ hoa nào đó thuộc về em. Điều quan trọng là em cần bước tiếp, đừng từ bỏ hạnh phúc phía trước của mình chỉ để ngoái nhìn những ngày xa…</strong>*@
+                    <strong>@Html.Raw(@getTinTuc[0].TomTat)</strong>
+                </p>
+                <p>
+                  <audio controls style="width:100%;">
+                      <source src="../@getTinTuc[0].Url_BaiHat" type="audio/mp3" />
+                      @*<source src="/asset/client/Audio_Video/Audio/Ta-Con-Thuoc-Ve-Nhau-Huong-Tram.mp3" type="audio/mp3"/>*@
+                  </audio>
+                </p>
+                <p style="text-align: right;">
+                    <strong>Hạnh Phúc Mới - Hari Won ft Phạm Quỳnh Anh</strong>
+                </p>
+                <div class="content_news_main">
+                    @Html.Raw(@getTinTuc[0].NoiDung)
+                </div>
+                <p style="text-align:right;">
+                    <em>
+                        <strong>Đăng bởi Dung Nhi </strong>
+                    </em>
+                </p>
+               
+            </div>
+        </div>
+        <div id="web_vt_banner_player_detail" class="banner-wap banner-left-web">
+            <a href="#">
+                <img  width="100%" src="~/asset/client/images/Quang Cao/AhIpWhYD9ejVheVJABwQ59068e5e11375.jpg" />
+            </a>
+        </div>
+        <div class="keeng-news-other">
+            <h2 class="keeng-title-h2">
+                CÁC TIN KHÁC
+            </h2>
+            @helper Truncate(string input, int length)
+            {
+                if (input.Length <= length)
+                {
+                        @input
+                }
+                else
+                {
+                        @input.Substring(0, length)<text>...</text>
+                }
+              }
+            @foreach (var item in ListTinTuc)
+            {
+                <div class="show-blog">
+                    <div class="show-blog-item">
+                        <a class="blog-lnk-img" href="@Url.Action("Index", "tin-tuc", new { @Id=@item.Id})">
+                            <img src="@item.urlHinhAnh" />
+                        </a>
+                        <div class="blog-info">
+                            <h3 class="blog-info-h3">
+                                <a href="@Url.Action("Index", "tin-tuc", new { @Id=@item.Id})">
+                                    @item.TieuDe
+                                </a>
+                            </h3>
+                                @*@Html.Raw(Truncate(item.TomTat,200));*@
+                                @Html.Raw("<div class='blog-info-p'>" + (item.TomTat.Length>300?item.TomTat.Substring(0,300) + "<text>...</text>" : item.TomTat) + "</div>")
+                        </div>
+                    </div>
+                </div>
+            }
+            @*<div class="show-blog">
+                <div class="show-blog-item">
+                    <a class="blog-lnk-img" href="#">
+                        <img src="~/asset/client/images/Quang Cao/Xeaa2bGTjVzv5qIEofyP58fb20e4ea1af_147_83.jpg" />
+                    </a>
+                    <div class="blog-info">
+                        <h3 class="blog-info-h3">
+                            <a href="#">
+                                Tình yêu suy cho cùng cũng chỉ là câu hứa, nên lắm người quên, em nhớ để làm gì?
+                            </a>
+                        </h3>
+                        <p class="blog-info-p">
+                            Nếu một ngày sự im lặng của bạn không còn làm họ mảy may lo âu nữa, thì đã đến lúc kiêu hãnh rời đi.
+                        </p>
+                    </div>
+                </div>
+            </div>*@
+        </div>
+    </div>
+
+

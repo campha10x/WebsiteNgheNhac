@@ -23,11 +23,13 @@ namespace Model.EF
         [StringLength(50)]
         public string Url_Video { get; set; }
 
-        public bool? Active { get; set; }
+        public bool Active { get; set; }
 
         public long? Id_ChuDe { get; set; }
 
         public long? Id_NhanVien { get; set; }
+
+        public int? Ord { get; set; }
 
         [Column(TypeName = "date")]
         public DateTime? NgayDang { get; set; }

@@ -13,5 +13,9 @@ namespace WebsiteNgheNhac.Areas.Admin.Controllers
         {
             return View();
         }
+        public EmptyResult Alive()
+        {
+            return new EmptyResult();
+        }
     }
 }

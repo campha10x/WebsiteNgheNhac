@@ -45,14 +45,14 @@
                     <div class="panel-body">
                         @using (Html.BeginForm("Login", "Login", FormMethod.Post))
                         {
-                            @Html.ValidationSummary(false, "", new {@class="text-danger" });
+                            @Html.ValidationSummary(false, "", new {@class="text-danger" })
                             <fieldset>
                                 <div class="form-group">
-                                    @Html.TextBoxFor(model=>model.UserName,new {@class= "form-control",@autofocus= "autofocus" });
+                                    @Html.TextBoxFor(model=>model.UserName,new {@class= "form-control",@autofocus= "autofocus" })
                                 @*    <input class="form-control" placeholder="E-mail" name="email" type="email" autofocus>*@
                                 </div>
                                 <div class="form-group">
-                                    @Html.PasswordFor(model=>model.Password,new {@class= "form-control" });
+                                    @Html.PasswordFor(model=>model.Password,new {@class= "form-control" })
                                     @*<input class="form-control" placeholder="Password" name="password" type="password" value="">*@
                                 </div>
                                 <div class="checkbox">

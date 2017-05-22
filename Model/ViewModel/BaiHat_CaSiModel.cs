@@ -25,5 +25,8 @@ namespace Model.ViewModel
         public string TrinhDoHocVan { get; set; }
         public string MoTaSuNghiep { get; set; }
         public string urlImage { get; set; }
+
+        public string TenTheLoai { get; set; }
+        public string Hoten { get; set; }
     }
 }

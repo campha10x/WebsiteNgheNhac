@@ -12,74 +12,152 @@
 }
 @section jsFooter
 {
-    <script src="~/asset/admin/js/controller/nhanviencontroller.js"></script>
+    <script src="~/Scripts/pluggin/mustache.min.js"></script>
+    <script src="~/Scripts/pluggin/jquery.twbsPagination.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/controller/nhanviencontrollers.js"></script>
 }
-<div class="col-lg-12">
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            Kitchen Sink
+
+<br />
+<div class="row">
+    <div class="col-md-12">
+        <div class="col-md-11">
+            <div class="col-md-4">
+                <input type="text" class="form-control" id="txtNameS" placeholder="Type name" />
+            </div>
+            <div class="col-md-4">
+                <select class="form-control" id="ddlStatusS">
+                    <option value="">All</option>
+                    <option value="true">Active</option>
+                    <option value="false">Locked</option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <button class="btn btn-primary" id="btnSearch">Search</button>
+                <button class="btn btn-default" id="btnReset">Reset</button>
+            </div>
         </div>
-        <!-- /.panel-heading -->
-        <div class="panel-body">
-            @using (Html.BeginForm("Index", "NhanVien", FormMethod.Get))
-            {
-                <div class="row form-group">
-                    <div class="col-lg-12">
-                        <div class="col-md-4">
-                            <input type="text" value="@ViewBag.SearchString" class="form-control" name="searchString" />
-                        </div>
-                        <div class="col-md-4">
-                            <button type="submit" class="btn btn-success">Tìm kiếm</button>
+        <div class="col-md-1">
+            <button id="btnAddNew" class="btn btn-success pull-right">Add employee</button>
+        </div>
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-striped table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Tên nhân viên</th>
+                    <th>Ngày sinh</th>
+                    <th>Giới tính</th>
+                    <th>Lương</th>
+                    <th>Chức vụ</th>
+                    <th>Id_Quyền</th>
+                    <th>Tên tài khoản</th>
+                    <th>Trạng thái</th>
+                    <th>#</th>
+                </tr>
+            </thead>
+            <tbody id="tblData"></tbody>
+        </table>
+        <div id="pagination" class="pagination">
+        </div>
+    </div>
+
+</div>
+<script id="data-template" type="x-tmpl-mustache">
+    <tr>
+        <td>{{Id}}</td>
+        <td>{{tenNV}}</td>
+        <td>{{NgaySinh}}</td>
+        <td>{{gioitinh}}</td>
+        <td><input type="number" class="txtLuong" data-id="{{Id}}" value="{{Luong}}" /></td>
+        <td>{{ChucVu}}</td>
+        <td>{{Id_Quyen}}</td>
+        <td>{{UserName}}</td>
+        <td>{{{Status}}}</td>
+        <td>
+            <button class="btn btn-primary btn-edit" data-id="{{Id}}">Edit</button>
+            <button class="btn btn-danger btn-delete" data-id="{{Id}}">Delete</button>
+        </td>
+    </tr>
+</script>
+@RenderPage("_AddUpdateModal.cshtml")
+@*<div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Kitchen Sink
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                @using (Html.BeginForm("Index", "NhanVien", FormMethod.Get))
+                {
+                    <div class="row form-group">
+                        <div class="col-lg-12">
+                            <div class="col-md-4">
+                                <input type="text" value="@ViewBag.SearchString" class="form-control" name="searchString" />
+                            </div>
+                            <div class="col-md-4">
+                                <button type="submit" class="btn btn-success">Tìm kiếm</button>
+                            </div>
                         </div>
                     </div>
-                </div>
-            }
-            <div class="table-responsive">
-                <table class="table table-striped table-bordered table-hover">
-                    <thead>
-                        <tr>
-                            <th>Id</th>
-                            <th>Tên nhân viên</th>
-                            <th>Ngày sinh</th>
-                            <th>Giới tính</th>
-                            <th>Chức vụ</th>
-                            <th>Id_Quyền</th>
-                            <th>Tên tài khoản</th>
-                            <th>Trạng thái</th>
-                            <th>#</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var item in Model)
-                        {
+                }
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered table-hover">
+                        <thead>
                             <tr>
-
-                                <td>@item.Id</td>
-                                <td>@item.tenNV</td>
-                                <td>@Convert.ToString(string.Format("{0:dd/MM/yyyy}", @item.NgaySinh))</td>
-                                <td>@item.gioitinh</td>
-                                <td>@item.ChucVu</td>
-                                <td>@item.Id_Quyen</td>
-                                <td>@item.UserName</td>
-                                <td><a href="#" class="btn-active" data-id="@item.Id">@(item.Status ? "Kích hoạt":"Khóa")</a></td>
-                                <td id="row_@item.Id">
-                                    <a href="/Admin/NhanVien/Edit/@item.Id">Sửa</a>|
-                                    @Ajax.ActionLink("Xóa", "Delete", new { @id = item.Id }, new AjaxOptions
-                               {
-                                   Confirm = "Bạn có muốn xóa bản ghi này?",
-                                   OnComplete = "$('#row_" + @item.Id + "').remove()",
-                                   HttpMethod = "Delete"
-                               })
-                                </td>
+                                <th>Id</th>
+                                <th>Tên nhân viên</th>
+                                <th>Ngày sinh</th>
+                                <th>Giới tính</th>
+                                <th>Chức vụ</th>
+                                <th>Id_Quyền</th>
+                                <th>Tên tài khoản</th>
+                                <th>Trạng thái</th>
+                                <th>#</th>
                             </tr>
-                        }
-                    </tbody>
-                </table>
-                @Html.PagedListPager(Model, page => Url.Action("Index", new { page, searchString = Request.QueryString["searchString"] }));
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+
+                                    <td>@item.Id</td>
+                                    <td>@item.tenNV</td>
+                                    <td>@Convert.ToString(string.Format("{0:dd/MM/yyyy}", @item.NgaySinh))</td>
+                                    <td>@item.gioitinh</td>
+                                    <td>@item.ChucVu</td>
+                                    <td>@item.Id_Quyen</td>
+                                    <td>@item.UserName</td>
+                                    <td><a href="#" class="btn-active" data-id="@item.Id">@(item.Status ? "Kích hoạt":"Khóa")</a></td>
+                                    <td id="row_@item.Id">
+                                        <a href="/Admin/NhanVien/Create">
+                                            <img src="~/asset/admin/images/1494254611_plus.png" />
+                                        </a>
+                                        <a href="/Admin/NhanVien/Edit/@item.Id">
+                                            <img src="~/asset/admin/images/1494254785_compose.png" />
+                                        </a>
+                                        @Ajax.ActionLink(" ", "Delete", new { @id = item.Id }, new AjaxOptions
+                                   {
+                                       Confirm = "Bạn có muốn xóa bản ghi này?",
+                                       OnComplete = "$('#row_" + @item.Id + "').remove()",
+                                       HttpMethod = "Delete"
+                                   },new {
+                                       style = "background-image: url('/asset/admin/images/1494254813_Cancel.png');width: 24px; height: 24px;float:left;"
+                                   } )
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, searchString = Request.QueryString["searchString"] }))
+                </div>
+                <!-- /.table-responsive -->
             </div>
-            <!-- /.table-responsive -->
+            <!-- /.panel-body -->
         </div>
-        <!-- /.panel-body -->
-    </div>
-    <!-- /.panel -->
-</div>
+        <!-- /.panel -->
+    </div>*@

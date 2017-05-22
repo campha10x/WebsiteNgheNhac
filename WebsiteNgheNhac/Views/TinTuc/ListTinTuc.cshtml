@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewBag.Title = "ListTinTuc";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var ListTinTuc= (List<Model.EF.tbl_TinTuc>)ViewBag.ListTinTuc;
+}
+
+<div class="container">
+    <div class="col-md-8">
+        <div class="keeng-news keeng-news-detail">
+            <h2 class="keeng-title-h2 keeng-upper">
+                CẢM XÚC ÂM NHẠC
+            </h2>
+            <div class="show-blog">
+                @foreach (var item in ListTinTuc)
+                {
+                    <div class="show-blog-item">
+                        <a class="blog-lnk-img">
+                            <img src="@item.urlHinhAnh" />
+                        </a>
+                        <div class="blog-info">
+                            <h3 class="blog-info-h3">
+                                <a href="#">@item.TieuDe</a>
+                            </h3>
+                            <p class="blog-info-p">
+                              @Html.Raw(@item.TomTat.Length>300? item.TomTat.Substring(0, 300) + "<text>...</text>" : item.TomTat)
+                            </p>
+                        </div>
+                    </div>
+                }
+                @*<div class="show-blog-item">
+                    <a class="blog-lnk-img">
+                        <img src="~/Data/images/TinTuc/6zK0iLsK3SstJkytdW4U590a8cdb98d23.jpg" />
+                    </a>
+                    <div class="blog-info">
+                        <h3 class="blog-info-h3">
+                            <a href="#">Tháng 5 về, em hãy cứ rũ bỏ nỗi buồn mà thảnh thơi đi tìm hạnh phúc mới</a>
+                        </h3>
+                        <p class="blog-info-p">
+                            Đã đến lúc gác lại chuyện xưa, trên đường đời trải đầy những nụ hoa, luôn có một nụ hoa nào đó thuộc về em. Điều quan trọng là em cần bước tiếp, đừng từ bỏ hạnh phúc phía trước của mình chỉ để ngoái nhìn những ngày xa…
+                        </p>
+                    </div>
+                </div>*@
+            </div>
+           
+        </div>
+    </div>
+

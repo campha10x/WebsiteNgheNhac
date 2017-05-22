@@ -22,10 +22,13 @@ namespace Model.EF
 
         public string url_Image { get; set; }
 
+        public bool? Active { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_BaiHat> tbl_BaiHat { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_Video> tbl_Video { get; set; }
+
+     
     }
 }

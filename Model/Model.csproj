@@ -59,14 +59,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dao\AlbumDao.cs" />
+    <Compile Include="Dao\BaiHatDao.cs" />
     <Compile Include="Dao\BaiHat_CasiDao.cs" />
+    <Compile Include="Dao\CaSiDao.cs" />
     <Compile Include="Dao\ChuDeDao.cs" />
     <Compile Include="Dao\MenuDao.cs" />
     <Compile Include="Dao\NguoiDungDao.cs" />
+    <Compile Include="Dao\NhacSiDao.cs" />
     <Compile Include="Dao\NhanVienDao.cs" />
     <Compile Include="Dao\QuyenDao.cs" />
     <Compile Include="Dao\Slide_GioiThieuDao.cs" />
     <Compile Include="Dao\TheLoaiDao.cs" />
+    <Compile Include="Dao\TinTucDao.cs" />
     <Compile Include="Dao\VideoDao.cs" />
     <Compile Include="Dao\Video_CaSiDao.cs" />
     <Compile Include="EF\tbl_Album.cs" />
@@ -75,6 +80,7 @@
     <Compile Include="EF\tbl_ChuDe.cs" />
     <Compile Include="EF\tbl_Menu.cs" />
     <Compile Include="EF\tbl_NguoiDung.cs" />
+    <Compile Include="EF\tbl_NguoiSangTac.cs" />
     <Compile Include="EF\tbl_NhanVien.cs" />
     <Compile Include="EF\tbl_QuangCao.cs" />
     <Compile Include="EF\tbl_Quyen.cs" />
@@ -83,25 +89,9 @@
     <Compile Include="EF\tbl_TinTuc.cs" />
     <Compile Include="EF\tbl_Video.cs" />
     <Compile Include="EF\WebsiteNgheNhacDbContext.cs" />
-    <Compile Include="Migrations\201703211121050_InstallDb.cs" />
-    <Compile Include="Migrations\201703211121050_InstallDb.Designer.cs">
-      <DependentUpon>201703211121050_InstallDb.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201703211440014_Tbl_Menus.cs" />
-    <Compile Include="Migrations\201703211440014_Tbl_Menus.Designer.cs">
-      <DependentUpon>201703211440014_Tbl_Menus.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201703221537452_tbl_Slide_GioiThieu.Title.cs" />
-    <Compile Include="Migrations\201703221537452_tbl_Slide_GioiThieu.Title.Designer.cs">
-      <DependentUpon>201703221537452_tbl_Slide_GioiThieu.Title.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201703251506233_tbl_BaiHat.cs" />
-    <Compile Include="Migrations\201703251506233_tbl_BaiHat.Designer.cs">
-      <DependentUpon>201703251506233_tbl_BaiHat.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201704051459070_tbl_NguoiDung.cs" />
-    <Compile Include="Migrations\201704051459070_tbl_NguoiDung.Designer.cs">
-      <DependentUpon>201704051459070_tbl_NguoiDung.cs</DependentUpon>
+    <Compile Include="Migrations\201705080845190_tbl_TinTuc.cs" />
+    <Compile Include="Migrations\201705080845190_tbl_TinTuc.Designer.cs">
+      <DependentUpon>201705080845190_tbl_TinTuc.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -109,27 +99,17 @@
     <Compile Include="ViewModel\Video_CaSiModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\PagedList.css" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201703211121050_InstallDb.resx">
-      <DependentUpon>201703211121050_InstallDb.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201703211440014_Tbl_Menus.resx">
-      <DependentUpon>201703211440014_Tbl_Menus.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201703221537452_tbl_Slide_GioiThieu.Title.resx">
-      <DependentUpon>201703221537452_tbl_Slide_GioiThieu.Title.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201703251506233_tbl_BaiHat.resx">
-      <DependentUpon>201703251506233_tbl_BaiHat.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704051459070_tbl_NguoiDung.resx">
-      <DependentUpon>201704051459070_tbl_NguoiDung.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201705080845190_tbl_TinTuc.resx">
+      <DependentUpon>201705080845190_tbl_TinTuc.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,29 +1,5 @@
 ﻿$(document).ready(function () {
-    //$('#btnSubmit').click(function () {
-    //    var username = $('#txttaikhoan').val();
-    //    var password = $('#txtPassword').val();
-    //    if (username == '' || password == '') {
-    //        $('#lblError').text('Tài khoản và mật khẩu không thể bỏ trống');
-    //        return;
-    //    }
-    //    var user = {
-    //        TaiKhoan:username,
-    //        MatKhau: password
-    //    }
-    //    $.ajax({
-    //        url: '/TrangChu/Index',
-    //        contentType:'json',
-    //        data: user,
-    //        type: "POST"
-    //    });
-    //});
-
-  
-    //var value = '@Request.RequestContext.HttpContext.Session["TaiKhoan"]';
-    //if (value == null)
-    //    $('.sign-in').html('Đăng kí')
-    //else
-    //    $('.sign-in').html('Thoát')
+    
     $('#btnSubmit').off('click').on('click', function () {
         var username = $('#txttaikhoan').val();
         var password = $('#txtPassword').val();

@@ -9,16 +9,30 @@ namespace Model.Dao
 {
     public class NhanVienDao
     {
-        WebsiteNgheNhacDbContext db = null;
+        private WebsiteNgheNhacDbContext db = null;
         public NhanVienDao()
         {
             db = new WebsiteNgheNhacDbContext();
+        }
+        public List<tbl_NhanVien> ListByAll()
+        {
+            db.Configuration.ProxyCreationEnabled = false;
+            return db.tbl_NhanVien.ToList();
         }
         public long Insert(tbl_NhanVien entity)
         {
             db.tbl_NhanVien.Add(entity);
             db.SaveChanges();
             return entity.Id;
+        }
+        public IQueryable<tbl_NhanVien> ListPhanTrang(int page,int pageSize)
+        {
+            db.Configuration.ProxyCreationEnabled = false;
+            return db.tbl_NhanVien.OrderBy(x=>x.Id).Skip((page - 1) * pageSize).Take(pageSize).AsQueryable();
+        }
+        public int TongRow()
+        {
+            return db.tbl_NhanVien.Count();
         }
         public bool Update(tbl_NhanVien entity)
         {
@@ -41,17 +55,21 @@ namespace Model.Dao
 
                 return false;
             }
-          
         }
-        public IEnumerable<tbl_NhanVien>ListAllPaging(string searchString,int page,int pageSize)
+        //public IEnumerable<tbl_NhanVien>ListAllPaging(string searchString,int page,int pageSize)
+        //{
+        //    IQueryable<tbl_NhanVien> model = db.tbl_NhanVien;
+        //    if(!string.IsNullOrEmpty(searchString))
+        //    {
+        //        model = model.Where(x => x.UserName.Contains(searchString)||x.tenNV.Contains(searchString));
+        //    }
+        //    return model.OrderBy(x => x.Id).ToPagedList(page,pageSize);
+        //}
+        public tbl_NhanVien GetById(long id)
         {
-            IQueryable<tbl_NhanVien> model = db.tbl_NhanVien;
-            if(!string.IsNullOrEmpty(searchString))
-            {
-                model = model.Where(x => x.UserName.Contains(searchString)||x.tenNV.Contains(searchString));
-            }
-            return model.OrderBy(x => x.Id).ToPagedList(page,pageSize);
+            return db.tbl_NhanVien.Single(x => x.Id == id);
         }
+
         public tbl_NhanVien GetById(string userName)
         {
             return db.tbl_NhanVien.SingleOrDefault(x=>x.UserName==userName);
@@ -73,7 +91,7 @@ namespace Model.Dao
                 }
                 else
                 {
-                    if (result.Password == passWord)
+                    if (String.Compare(result.Password,passWord)==0)
                         return 1;
                     else
                         return -2;

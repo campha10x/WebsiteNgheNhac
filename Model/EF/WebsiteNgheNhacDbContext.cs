@@ -4,12 +4,15 @@ namespace Model.EF
     using System.Data.Entity;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
+    using System.Data.Entity.Validation;
 
     public partial class WebsiteNgheNhacDbContext : DbContext
     {
+      
         public WebsiteNgheNhacDbContext()
             : base("name=WebsiteNgheNhac")
         {
+           
         }
 
         public virtual DbSet<tbl_Album> tbl_Album { get; set; }
@@ -25,6 +28,7 @@ namespace Model.EF
         public virtual DbSet<tbl_TinTuc> tbl_TinTuc { get; set; }
         public virtual DbSet<tbl_Video> tbl_Video { get; set; }
         public virtual DbSet<tbl_Menu> tbl_Menu { get; set; }
+        public virtual DbSet<tbl_NhacSi> tbl_NhacSi { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<tbl_Album>()
@@ -59,6 +63,12 @@ namespace Model.EF
                 .HasMany(e => e.tbl_Video)
                 .WithOptional(e => e.tbl_CaSi)
                 .HasForeignKey(e => e.Id_CaSi);
+
+           //modelBuilder.Entity(tbl_NhacSi)()
+           //     .HasMany(e => e.tbl_BaiHat)
+           //     .WithOptional(e => e.tbl_CaSi)
+           //     .HasForeignKey(e => e.Id_CaSi);
+
 
             modelBuilder.Entity<tbl_ChuDe>()
                 .Property(e => e.url_Image)
@@ -104,6 +114,7 @@ namespace Model.EF
                 .Property(e => e.urlImage)
                 .IsUnicode(false);
 
+
             modelBuilder.Entity<tbl_TheLoai>()
                 .HasMany(e => e.tbl_BaiHat)
                 .WithOptional(e => e.tbl_TheLoai)
@@ -121,6 +132,18 @@ namespace Model.EF
             modelBuilder.Entity<tbl_Video>()
                 .Property(e => e.Url_Video)
                 .IsUnicode(false);
+        }
+        public override int SaveChanges()
+        {
+            try
+            {
+                return base.SaveChanges();
+            }
+            catch (DbEntityValidationException ex)
+            {
+                string errorMessages = string.Join("; ", ex.EntityValidationErrors.SelectMany(x => x.ValidationErrors).Select(x => x.ErrorMessage));
+                throw new DbEntityValidationException(errorMessages);
+            }
         }
     }
 }

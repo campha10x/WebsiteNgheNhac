@@ -1,7 +1,8 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html>
 <head>
-    <title>Title of the document</title>
+    <title>Mạng xã hội âm nhạc Keeng</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="~/asset/client/css/reset.css">
@@ -11,6 +12,8 @@
     <link href="~/asset/client/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/asset/client/css/trangchu.css">
     <link href="~/asset/client/css/video-js.css" rel="stylesheet" />
+    <link href="~/asset/client/css/bootrap-social.css" rel="stylesheet" />
+    <link href="~/asset/client/css/jquery-ui.css" rel="stylesheet" />
 
     <script src="~/asset/client/js/jquery-3.2.0.min.js"></script>
     <script src="~/asset/client/js/slick.js" type="text/javascript" charset="utf-8"></script>
@@ -18,10 +21,23 @@
     <script src="~/asset/client/js/jquery.custom-scrollbar.js"></script>
     <script src="~/asset/client/js/bootstrap.min.js"></script>
     <script src="~/asset/client/js/video.js"></script>
+    <script src="~/asset/client/js/jquery-ui.js"></script>
 </head>
 
 <body>
     <div id="fb-root"></div>
+    <script>
+        (function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.9&appId=444531092551120";
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+
+
+    @*<div id="fb-root"></div>
     <script>
         (function (d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0];
@@ -29,13 +45,26 @@
             js = d.createElement(s); js.id = id;
             js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1";
             fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
+        }(document, 'script', 'facebook-jssdk'));*@
 
-
+    <script>
         $(document).ready(function () {
-           
-                
-                    $(".overlayLink-signin").click(function (event) {
+            $("#btnlinkRegister").click(function () {
+                $(".overlay-signin").fadeToggle("fast");
+            });
+            $("#btnlinkLogout").click(function () {
+                $.ajax({
+                    type: "POST",
+                    url: '/TrangChu/Logout',
+                    dataType: 'json',
+                    success: function (res) {
+                        if (res.status == true) {
+                            window.location.href = '/TrangChu/Index';
+                        }
+                    }
+                })
+            });
+                    @*$(".overlayLink-signin").click(function (event) {
                         event.preventDefault();
                        
                         var checkdangnhap='@TempData["CheckDangNhap"]';
@@ -44,23 +73,10 @@
                             $(".overlay-signin").fadeToggle("fast");
                         }
                         if (checkdangnhap !== '') {
-                            $.ajax({
-                                type: "POST",
-                                url: '/TrangChu/Logout',
-                                dataType: 'json',
-                                success: function (res) {
-                                    if (res.status == true) {
-                                        //checkdangnhap = "Đăng kí";
-                                        //'@TempData["CheckDangNhap"]' = checkdangnhap;
-                                        //$('.sign-in').html('Đăng kí');
-                                        window.location.href = '/TrangChu/Index';
-                                    }
-                                }
-                            })
+                           
                         }
 
-                    });
-
+                    });*@
                     $(".close-signin").click(function () {
                         $(".overlay-signin").fadeToggle("fast");
                     });
@@ -71,10 +87,6 @@
                             $(".overlay-signin").fadeToggle("fast");
                         }
                     });
-                
-          
-
-           
         });
     </script>
     <div class="header">
@@ -87,8 +99,9 @@
                 </div>
                 <div class="col-md-6">
                     <div class="box_search">
-                        <form id="formSearchQuick">
-                            <input id="txtSearch" type="text" maxlength="45" placeholder="Từ khóa tìm kiếm.." autocomplete="on">
+                        @*autocomplete="on"*@
+                        <form id="formSearchQuick"  action="/tim-kiem/Search" method="get">
+                            <input id="txtSearch" type="text" name="keyword" maxlength="45" placeholder="Từ khóa tìm kiếm.." >
                             <button class="search-keeng-btn">
                                 <img src="~/asset/client/images/TieuDeKoDoi/btn_search.png" height="37">
                             </button>
@@ -96,10 +109,10 @@
                     </div>
                 </div>
                 <div class="col-md-3 login_container">
-                    <div style="margin-top:15px; height:72px;">
+                    <div style="margin-top:35px;">
                         @*@RenderPage("Dangki.cshtml", new Model.EF.tbl_NguoiDung())*@
-                        @Html.Action("Dangki", "TrangChu");
-                        @Html.Partial("~/Views/Shared/Dangnhap.cshtml");
+                        @Html.Partial("~/Views/Shared/DangKi.cshtml")
+                        @Html.Partial("~/Views/Shared/Dangnhap.cshtml")
                     </div>
                 </div>
             </div>
@@ -110,7 +123,7 @@
         </div>
     </div>
     <div class="content">
-        @RenderBody();
+        @RenderBody()
         @RenderPage("Footer.cshtml")
         <script type="text/javascript">
         $(document).ready(function () {
@@ -121,7 +134,11 @@
                 speed: 500,
                 dots: true
             });
-
+            //$("#txtSearch").on("keydown", function (e) {
+            //    if (e.which === 13) {
+            //       window.location.href = document.location.host + '/tim-kiem/Search-' + encodeURI($(this).val());
+            //    }
+            //});
 
             @*if('@ViewData["CheckDangNhap"]' == "")
             {
@@ -132,6 +149,7 @@
                     $('.sign-in').html('Thoát')
             }*@
         })
+            
         </script>
     </div>
 

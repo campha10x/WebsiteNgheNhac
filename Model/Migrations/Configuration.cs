@@ -9,7 +9,8 @@ namespace Model.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationDataLossAllowed = true;
         }
 
         protected override void Seed(Model.EF.WebsiteNgheNhacDbContext context)

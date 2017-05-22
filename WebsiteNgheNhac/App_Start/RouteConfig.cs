@@ -12,13 +12,60 @@ namespace WebsiteNgheNhac
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-
+            // BotDetect requests must not be routed
+            routes.IgnoreRoute("{*botdetect}",new { botdetect = @"(.*)BotDetectCaptcha\.ashx" });
 
             routes.MapRoute(
                name: "ChiTietNhac",
                url: "bang-xep-hang/{action}-{id}",
                defaults: new { controller = "NgheNhac", action = "Index", id = UrlParameter.Optional }
            );
+
+            routes.MapRoute(
+             name: "Video",
+              url: "video/{action}-{Id}",
+             defaults: new { controller = "Video", action = "ChiTietVideo", Id=UrlParameter.Optional }
+             );
+
+            //routes.MapRoute(
+            //"tintucweb",
+            //  "{tin-tuc}/{action}",
+            // new { controller = "TinTuc", action = "Index" }
+            //);
+
+            routes.MapRoute(
+            name:"TinTuc",
+             url: "{tin-tuc}/{action}-{Id}",
+            defaults: new { controller = "TinTuc", action = "Index", Id = UrlParameter.Optional },
+             namespaces:  new[] { "WebsiteNgheNhac.Controllers" }
+            );
+            routes.MapRoute(
+            name: "ListCasi",
+             url: "{controller}/{action}",
+            defaults: new { controller = "Danhsachcasi", action = "Index" },
+             namespaces: new[] { "WebsiteNgheNhac.Controllers" }
+            );
+
+            routes.MapRoute(
+            name: "ListTinTuc",
+             url: "{danh-sach}/{cam-xuc-am-nhac}",
+            defaults: new { controller = "TinTuc", action = "ListTinTuc"},
+             namespaces: new[] { "WebsiteNgheNhac.Controllers" }
+            );
+
+          
+            routes.MapRoute(
+            name: "TinTucAdmin",
+             url: "{controller}/{action}-{Id}",
+            defaults: new { controller = "TinTuc", action = "Index", Id = UrlParameter.Optional },
+             namespaces: new[] { "WebsiteNgheNhac.Areas.Admin.Controllers" }
+            );
+
+            routes.MapRoute(
+              name: "Search",
+               url: "tim-kiem/{action}",
+              defaults: new { controller = "NgheNhac", action = "Search"}
+              );
 
             routes.MapRoute(
                 name: "Default",

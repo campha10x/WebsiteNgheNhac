@@ -28,8 +28,9 @@ namespace WebsiteNgheNhac.Areas.Admin.Controllers
                     var userSession = new UserLogin();
                     userSession.UserName = user.UserName;
                     userSession.Id = user.Id;
+                    Session["Id"] = user.Id;
                     Session.Add(CommonConstants.USER_SESSION, userSession);
-                    return RedirectToAction("Create", "TinTuc");
+                    return RedirectToAction("Index", "TinTuc");
                 }
                 else if (result == 0)
                 {

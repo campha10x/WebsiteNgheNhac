@@ -6,34 +6,45 @@
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class tbl_NguoiDung:IDisposable
+    public partial class tbl_NguoiDung : IDisposable
     {
-        [Display(Name ="Tài khoản")]
-        [Required(ErrorMessage ="{0} không được bỏ trống")]
+
+        [Display(Name = "Tài khoản")]
         [StringLength(50)]
         public string TaiKhoan { get; set; }
+
         [Display(Name = "Mật khẩu")]
-        [Required(ErrorMessage = "{0} không được bỏ trống")]
+        //[Column("MatKhau", TypeName = "nvarchar")]
         [StringLength(50)]
         public string MatKhau { get; set; }
+
         [Display(Name = "Mã tài khoản")]
-        [Required(ErrorMessage = "{0} không được bỏ trống")]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        //[DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long Id { get; set; }
+
         [Display(Name = "Trạng thái")]
-        [Required(ErrorMessage = "{0} không được bỏ trống")]
-        public bool? Active { get; set; }
+        public bool Active { get; set; }
+
+        //[Column("Facebook", TypeName ="varchar")]
         [Display(Name = "Facebook")]
-        [Required(ErrorMessage = "{0} không được bỏ trống")]
+        [StringLength(500)]
         public string Fb { get; set; }
-         [Display(Name ="Google")]
-        [Required(ErrorMessage = "{0} không được bỏ trống")]
-        [Column("Google+")]
-        public string Google_ { get; set; }
+
+        [Display(Name = "Google")]
+        [StringLength(500)]
+        //[Column("Google", TypeName = "varchar")]
+        public string Google { get; set; }
+
         [Display(Name = "Email")]
-        [Required(ErrorMessage = "{0} không được bỏ trống")]
+        //[Column("Email", TypeName = "nvarchar")]
+
         [StringLength(50)]
         public string Email { get; set; }
+
+        [Display(Name = "Họ tên")]
+        [StringLength(500)]
+        public string HoTen { get; set; }
         void IDisposable.Dispose()
         {
 

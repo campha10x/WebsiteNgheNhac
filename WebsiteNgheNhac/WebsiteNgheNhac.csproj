@@ -52,6 +52,14 @@
       <HintPath>..\packages\AWSSDK.2.3.55.0\lib\net45\AWSSDK.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="BotDetect, Version=4.1.0.0, Culture=neutral, PublicKeyToken=74616036388b765f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Captcha.4.1.0\lib\net45\BotDetect.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="BotDetect.Web.Mvc, Version=4.1.0.0, Culture=neutral, PublicKeyToken=74616036388b765f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Captcha.4.1.0\lib\net45\BotDetect.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="CKFinder, Version=2.3.0.2394, Culture=neutral, PublicKeyToken=579e7adc719a1423, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\ckfinder_aspnet_2.3\ckfinder\bin\Release\CKFinder.dll</HintPath>
@@ -102,6 +110,10 @@
     </Reference>
     <Reference Include="Dropbox.Api, Version=0.1.5960.22395, Culture=neutral, PublicKeyToken=310f0e82fbb45d01, processorArchitecture=MSIL">
       <HintPath>..\packages\Dropbox.Api.3.1.1\lib\net45\Dropbox.Api.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Facebook, Version=6.0.10.0, Culture=neutral, PublicKeyToken=58cb4f2111d1e6de, processorArchitecture=MSIL">
+      <HintPath>..\packages\Facebook.7.0.6\lib\net45\Facebook.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="ImageProcessor, Version=2.3.3.0, Culture=neutral, processorArchitecture=MSIL">
@@ -332,16 +344,21 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\BaiHatController.cs" />
     <Compile Include="Areas\Admin\Controllers\BaseController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
     <Compile Include="Areas\Admin\Controllers\NhanVienController.cs" />
     <Compile Include="Areas\Admin\Controllers\TinTucController.cs" />
+    <Compile Include="Areas\Admin\Controllers\VideoController.cs" />
     <Compile Include="Areas\Admin\Models\LoginModel.cs" />
     <Compile Include="Common\CommonConstants.cs" />
     <Compile Include="Common\Encryptor.cs" />
     <Compile Include="Common\UserLogin.cs" />
+    <Compile Include="Controllers\DanhsachcasiController.cs" />
     <Compile Include="Controllers\NgheNhacController.cs" />
+    <Compile Include="Controllers\TabBaiHatController.cs" />
+    <Compile Include="Controllers\TinTucController.cs" />
     <Compile Include="Controllers\TrangChuController.cs" />
     <Compile Include="Controllers\VideoController.cs" />
     <Compile Include="Global.asax.cs">
@@ -354,7 +371,12 @@
     <Content Include="asset\admin\dist\css\sb-admin-2.min.css" />
     <Content Include="asset\admin\dist\js\sb-admin-2.js" />
     <Content Include="asset\admin\dist\js\sb-admin-2.min.js" />
+    <Content Include="asset\admin\images\1494254611_plus.png" />
+    <Content Include="asset\admin\images\1494254785_compose.png" />
+    <Content Include="asset\admin\images\1494254813_Cancel.png" />
+    <Content Include="asset\admin\js\controller\baihatcontroller.js" />
     <Content Include="asset\admin\js\controller\nhanviencontroller.js" />
+    <Content Include="asset\admin\js\controller\tintuccontroller.js" />
     <Content Include="asset\admin\js\jquery-3.1.1.min.js" />
     <Content Include="asset\admin\js\jquery-ui.js" />
     <Content Include="asset\admin\js\jquery-ui.min.js" />
@@ -1331,9 +1353,108 @@
     <Content Include="asset\admin\js\Pluggin\ckfinder\_samples\sample.css" />
     <Content Include="asset\admin\js\Pluggin\ckfinder\_samples\standalone.html" />
     <Content Include="asset\admin\js\Pluggin\ckfinder\_samples\standalone_v1.html" />
-    <Content Include="asset\client\Audio_Video\Noi-Nay-Co-Anh-Son-Tung-M-TP.mp3" />
-    <Content Include="asset\client\Audio_Video\Video\Chuc Chong Ngu Ngon.mp4" />
+    <Content Include="asset\admin\js\Pluggin\jquery.dataTables.min.js" />
+    <Content Include="asset\admin\vendor\bootstrap-social\bootstrap-social.css" />
+    <Content Include="asset\admin\vendor\bootstrap\css\bootstrap.css" />
+    <Content Include="asset\admin\vendor\bootstrap\css\bootstrap.min.css" />
+    <Content Include="asset\admin\vendor\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="asset\admin\vendor\bootstrap\js\bootstrap.js" />
+    <Content Include="asset\admin\vendor\bootstrap\js\bootstrap.min.js" />
+    <Content Include="asset\admin\vendor\datatables-plugins\dataTables.bootstrap.css" />
+    <Content Include="asset\admin\vendor\datatables-plugins\dataTables.bootstrap.js" />
+    <Content Include="asset\admin\vendor\datatables-plugins\dataTables.bootstrap.min.js" />
+    <Content Include="asset\admin\vendor\datatables-plugins\index.html" />
+    <Content Include="asset\admin\vendor\datatables-responsive\dataTables.responsive.css" />
+    <Content Include="asset\admin\vendor\datatables-responsive\dataTables.responsive.js" />
+    <Content Include="asset\admin\vendor\datatables\css\dataTables.bootstrap.css" />
+    <Content Include="asset\admin\vendor\datatables\css\dataTables.bootstrap.min.css" />
+    <Content Include="asset\admin\vendor\datatables\css\dataTables.bootstrap4.css" />
+    <Content Include="asset\admin\vendor\datatables\css\dataTables.bootstrap4.min.css" />
+    <Content Include="asset\admin\vendor\datatables\css\dataTables.foundation.css" />
+    <Content Include="asset\admin\vendor\datatables\css\dataTables.foundation.min.css" />
+    <Content Include="asset\admin\vendor\datatables\css\dataTables.jqueryui.css" />
+    <Content Include="asset\admin\vendor\datatables\css\dataTables.jqueryui.min.css" />
+    <Content Include="asset\admin\vendor\datatables\css\dataTables.material.css" />
+    <Content Include="asset\admin\vendor\datatables\css\dataTables.material.min.css" />
+    <Content Include="asset\admin\vendor\datatables\css\dataTables.semanticui.css" />
+    <Content Include="asset\admin\vendor\datatables\css\dataTables.semanticui.min.css" />
+    <Content Include="asset\admin\vendor\datatables\css\dataTables.uikit.css" />
+    <Content Include="asset\admin\vendor\datatables\css\dataTables.uikit.min.css" />
+    <Content Include="asset\admin\vendor\datatables\css\jquery.dataTables.css" />
+    <Content Include="asset\admin\vendor\datatables\css\jquery.dataTables.min.css" />
+    <Content Include="asset\admin\vendor\datatables\css\jquery.dataTables_themeroller.css" />
+    <Content Include="asset\admin\vendor\datatables\images\favicon.ico" />
+    <Content Include="asset\admin\vendor\datatables\images\sort_asc.png" />
+    <Content Include="asset\admin\vendor\datatables\images\sort_asc_disabled.png" />
+    <Content Include="asset\admin\vendor\datatables\images\sort_both.png" />
+    <Content Include="asset\admin\vendor\datatables\images\sort_desc.png" />
+    <Content Include="asset\admin\vendor\datatables\images\sort_desc_disabled.png" />
+    <Content Include="asset\admin\vendor\datatables\js\dataTables.bootstrap.js" />
+    <Content Include="asset\admin\vendor\datatables\js\dataTables.bootstrap.min.js" />
+    <Content Include="asset\admin\vendor\datatables\js\dataTables.bootstrap4.js" />
+    <Content Include="asset\admin\vendor\datatables\js\dataTables.bootstrap4.min.js" />
+    <Content Include="asset\admin\vendor\datatables\js\dataTables.foundation.js" />
+    <Content Include="asset\admin\vendor\datatables\js\dataTables.foundation.min.js" />
+    <Content Include="asset\admin\vendor\datatables\js\dataTables.jqueryui.js" />
+    <Content Include="asset\admin\vendor\datatables\js\dataTables.jqueryui.min.js" />
+    <Content Include="asset\admin\vendor\datatables\js\dataTables.material.js" />
+    <Content Include="asset\admin\vendor\datatables\js\dataTables.material.min.js" />
+    <Content Include="asset\admin\vendor\datatables\js\dataTables.semanticui.js" />
+    <Content Include="asset\admin\vendor\datatables\js\dataTables.semanticui.min.js" />
+    <Content Include="asset\admin\vendor\datatables\js\dataTables.uikit.js" />
+    <Content Include="asset\admin\vendor\datatables\js\dataTables.uikit.min.js" />
+    <Content Include="asset\admin\vendor\datatables\js\jquery.dataTables.js" />
+    <Content Include="asset\admin\vendor\datatables\js\jquery.dataTables.min.js" />
+    <Content Include="asset\admin\vendor\datatables\js\jquery.js" />
+    <Content Include="asset\admin\vendor\flot-tooltip\jquery.flot.tooltip.js" />
+    <Content Include="asset\admin\vendor\flot-tooltip\jquery.flot.tooltip.min.js" />
+    <Content Include="asset\admin\vendor\flot-tooltip\jquery.flot.tooltip.source.js" />
+    <Content Include="asset\admin\vendor\flot\excanvas.js" />
+    <Content Include="asset\admin\vendor\flot\excanvas.min.js" />
+    <Content Include="asset\admin\vendor\flot\jquery.colorhelpers.js" />
+    <Content Include="asset\admin\vendor\flot\jquery.flot.canvas.js" />
+    <Content Include="asset\admin\vendor\flot\jquery.flot.categories.js" />
+    <Content Include="asset\admin\vendor\flot\jquery.flot.crosshair.js" />
+    <Content Include="asset\admin\vendor\flot\jquery.flot.errorbars.js" />
+    <Content Include="asset\admin\vendor\flot\jquery.flot.fillbetween.js" />
+    <Content Include="asset\admin\vendor\flot\jquery.flot.image.js" />
+    <Content Include="asset\admin\vendor\flot\jquery.flot.js" />
+    <Content Include="asset\admin\vendor\flot\jquery.flot.navigate.js" />
+    <Content Include="asset\admin\vendor\flot\jquery.flot.pie.js" />
+    <Content Include="asset\admin\vendor\flot\jquery.flot.resize.js" />
+    <Content Include="asset\admin\vendor\flot\jquery.flot.selection.js" />
+    <Content Include="asset\admin\vendor\flot\jquery.flot.stack.js" />
+    <Content Include="asset\admin\vendor\flot\jquery.flot.symbol.js" />
+    <Content Include="asset\admin\vendor\flot\jquery.flot.threshold.js" />
+    <Content Include="asset\admin\vendor\flot\jquery.flot.time.js" />
+    <Content Include="asset\admin\vendor\flot\jquery.js" />
+    <Content Include="asset\admin\vendor\font-awesome\css\font-awesome.css" />
+    <Content Include="asset\admin\vendor\font-awesome\css\font-awesome.min.css" />
+    <Content Include="asset\admin\vendor\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="asset\admin\vendor\font-awesome\HELP-US-OUT.txt" />
+    <Content Include="asset\admin\vendor\jquery\jquery.js" />
+    <Content Include="asset\admin\vendor\jquery\jquery.min.js" />
+    <Content Include="asset\admin\vendor\metisMenu\metisMenu.css" />
+    <Content Include="asset\admin\vendor\metisMenu\metisMenu.js" />
+    <Content Include="asset\admin\vendor\metisMenu\metisMenu.min.css" />
+    <Content Include="asset\admin\vendor\metisMenu\metisMenu.min.js" />
+    <Content Include="asset\admin\vendor\morrisjs\morris.css" />
+    <Content Include="asset\admin\vendor\morrisjs\morris.js" />
+    <Content Include="asset\admin\vendor\morrisjs\morris.min.js" />
+    <Content Include="asset\admin\vendor\raphael\raphael.js" />
+    <Content Include="asset\admin\vendor\raphael\raphael.min.js" />
+    <Content Include="asset\client\Audio_Video\Audio\BaiHat\Nhu-Ngay-Hom-Qua-Son-Tung-M-TP.mp3" />
+    <Content Include="asset\client\Audio_Video\Audio\Noi-Nay-Co-Anh-Son-Tung-M-TP.mp3" />
+    <Content Include="asset\client\Audio_Video\Audio\Ta-Con-Thuoc-Ve-Nhau-Huong-Tram.mp3" />
+    <Content Include="asset\client\Audio_Video\Audio\TinTuc\Nhu-Ngay-Hom-Qua-Son-Tung-M-TP.mp3" />
+    <Content Include="asset\client\Audio_Video\Audio\Tu-Giay-Phut-Dau-Hari-Won-Tran-Thanh.mp3" />
+    <Content Include="asset\client\Audio_Video\Audio\Xin-Anh-Dung-Dong-Nhi.mp3" />
+    <Content Include="asset\client\Audio_Video\Audio\You-Far-Away-The-Men.mp3" />
+    <Content Include="asset\client\Audio_Video\Video\Em Chưa 18 - WILL - LOU HOÀNG - KAITY NGUYỄN - Em Chưa 18 OST - Official Lyric Video.mp4" />
+    <Content Include="asset\client\Audio_Video\Video\NÃO CÁ VÀNG - ONLY C ft. LOU HOÀNG - OFFICIAL MV 2017.mp4" />
+    <Content Include="asset\client\css\bootrap-social.css" />
     <Content Include="asset\client\css\bootstrap.min.css" />
+    <Content Include="asset\client\css\jquery-ui.css" />
     <Content Include="asset\client\css\lang\ar.js" />
     <Content Include="asset\client\css\lang\bg.js" />
     <Content Include="asset\client\css\lang\ca.js" />
@@ -1353,7 +1474,19 @@
     <Content Include="asset\client\css\lang\vi.js" />
     <Content Include="asset\client\css\lang\zh-CN.js" />
     <Content Include="asset\client\css\lang\zh-TW.js" />
+    <Content Include="asset\client\images\BaiHat\sr2knbqtet402W0CEzc158c63dd8d38e0_103_103.jpg" />
+    <Content Include="asset\client\images\BaiHat\ver3_09_b.png" />
+    <Content Include="asset\client\images\BaiHat\ver3_12.png" />
+    <Content Include="asset\client\images\Casi\KvH6PuFcBo39qpjugbL858d63bd12644e_310_310.jpg" />
+    <Content Include="asset\client\images\Casi\o19hlrrE5HXVq6EdsqnA59159687abe74_310_310.jpg" />
+    <Content Include="asset\client\images\Casi\PMdMSbVDqxjkYXuLgpSR59127d7bf2e8a_310_310.jpg" />
+    <Content Include="asset\client\images\Casi\zdl0g3359wAvEuJXAKZj5911388ddfcf8.JPG" />
     <Content Include="asset\client\images\ChiTietVideo\4NgiEQ3CaJsjWUTUKdRp58e1ee9f91279.jpg" />
+    <Content Include="asset\client\images\ChiTietVideo\auto_active.png" />
+    <Content Include="asset\client\images\ChiTietVideo\EYqPh5iG7tY0vSvGFHMJ58bcd4ae2ce1b.jpg" />
+    <Content Include="asset\client\images\ChiTietVideo\ver3_09_c.png" />
+    <Content Include="asset\client\images\Quang Cao\AhIpWhYD9ejVheVJABwQ59068e5e11375.jpg" />
+    <Content Include="asset\client\images\Quang Cao\Xeaa2bGTjVzv5qIEofyP58fb20e4ea1af_147_83.jpg" />
     <Content Include="asset\client\images\TieuDeKoDoi\9711dbbe-9549-4142-83e7-1e46ec77ab50.png" />
     <Content Include="asset\client\images\TieuDeKoDoi\btn_search.png" />
     <Content Include="asset\client\images\TieuDeKoDoi\keeng_menu2.png" />
@@ -1367,6 +1500,8 @@
     <Content Include="asset\client\images\TieuDeKoDoi\viettelstudy_logo100.png" />
     <Content Include="asset\client\js\bootstrap.js" />
     <Content Include="asset\client\js\bootstrap.min.js" />
+    <Content Include="asset\client\js\controller\baseController.js" />
+    <Content Include="asset\client\js\controller\Dangki.js" />
     <Content Include="asset\client\js\controller\DangNhap.js" />
     <Content Include="asset\client\js\jquery-3.2.0.min.js" />
     <Content Include="asset\client\css\jquery.custom-scrollbar.css" />
@@ -1413,6 +1548,7 @@
     <Content Include="asset\client\images\TrangChu\web_ver3_19.png" />
     <Content Include="asset\client\images\TrangChu\xDYvjupOhPQD3oIkQDMV58999bf984030_103_103.jpg" />
     <Content Include="asset\client\images\TrangChu\Z8HcVJmpCVGtC5kgOPTH58abaa7f395ed.jpg" />
+    <Content Include="asset\client\js\jquery-ui.js" />
     <Content Include="asset\client\js\jquery.custom-scrollbar.js" />
     <Content Include="asset\client\js\script.js" />
     <Content Include="asset\client\js\slick.js" />
@@ -1420,8 +1556,12 @@
     <Content Include="asset\client\css\video-js.css" />
     <Content Include="asset\client\js\video.js" />
     <Content Include="Content\PagedList.css" />
+    <Content Include="Data\images\TinTuc\6zK0iLsK3SstJkytdW4U590a8cdb98d23.jpg" />
+    <Content Include="Data\images\TinTuc\rIGYuAyxTtUJVFLNBnT1591bce92bcfa5.jpg" />
+    <Content Include="Data\_thumbs\Images\TinTuc\rIGYuAyxTtUJVFLNBnT1591bce92bcfa5.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\bootbox.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -1431,9 +1571,7 @@
     <Content Include="Areas\Admin\Views\Login\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Layouts.cshtml" />
     <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\NhanVien\Create.cshtml" />
     <Content Include="Areas\Admin\Views\NhanVien\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\NhanVien\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\TinTuc\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Navigation.cshtml" />
     <Content Include="asset\admin\js\Pluggin\ckfinder\plugins\fileeditor\codemirror\LICENSE" />
@@ -1462,6 +1600,59 @@
     <Content Include="asset\client\css\font\vjs.svg" />
     <Content Include="asset\client\css\font\vjs.ttf" />
     <Content Include="asset\client\css\font\vjs.woff" />
+    <Content Include="Areas\Admin\Views\TinTuc\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\TinTuc\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\BaiHat\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\BaiHat\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\BaiHat\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Video\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\NhanVien\_AddUpdateModal.cshtml" />
+    <Content Include="asset\admin\vendor\bootstrap-social\bootstrap-social.less" />
+    <Content Include="asset\admin\vendor\bootstrap-social\bootstrap-social.scss" />
+    <Content Include="asset\admin\vendor\bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="asset\admin\vendor\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="asset\admin\vendor\bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="asset\admin\vendor\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="asset\admin\vendor\datatables-responsive\dataTables.responsive.scss" />
+    <Content Include="asset\admin\vendor\datatables\images\Sorting icons.psd" />
+    <Content Include="asset\admin\vendor\font-awesome\css\font-awesome.css.map" />
+    <Content Include="asset\admin\vendor\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="asset\admin\vendor\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="asset\admin\vendor\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="asset\admin\vendor\font-awesome\fonts\fontawesome-webfont.woff2" />
+    <Content Include="asset\admin\vendor\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="asset\admin\vendor\font-awesome\less\animated.less" />
+    <Content Include="asset\admin\vendor\font-awesome\less\bordered-pulled.less" />
+    <Content Include="asset\admin\vendor\font-awesome\less\core.less" />
+    <Content Include="asset\admin\vendor\font-awesome\less\extras.less" />
+    <Content Include="asset\admin\vendor\font-awesome\less\fixed-width.less" />
+    <Content Include="asset\admin\vendor\font-awesome\less\font-awesome.less" />
+    <Content Include="asset\admin\vendor\font-awesome\less\icons.less" />
+    <Content Include="asset\admin\vendor\font-awesome\less\larger.less" />
+    <Content Include="asset\admin\vendor\font-awesome\less\list.less" />
+    <Content Include="asset\admin\vendor\font-awesome\less\mixins.less" />
+    <Content Include="asset\admin\vendor\font-awesome\less\path.less" />
+    <Content Include="asset\admin\vendor\font-awesome\less\rotated-flipped.less" />
+    <Content Include="asset\admin\vendor\font-awesome\less\screen-reader.less" />
+    <Content Include="asset\admin\vendor\font-awesome\less\spinning.less" />
+    <Content Include="asset\admin\vendor\font-awesome\less\stacked.less" />
+    <Content Include="asset\admin\vendor\font-awesome\less\variables.less" />
+    <Content Include="asset\admin\vendor\font-awesome\scss\font-awesome.scss" />
+    <Content Include="asset\admin\vendor\font-awesome\scss\_animated.scss" />
+    <Content Include="asset\admin\vendor\font-awesome\scss\_bordered-pulled.scss" />
+    <Content Include="asset\admin\vendor\font-awesome\scss\_core.scss" />
+    <Content Include="asset\admin\vendor\font-awesome\scss\_extras.scss" />
+    <Content Include="asset\admin\vendor\font-awesome\scss\_fixed-width.scss" />
+    <Content Include="asset\admin\vendor\font-awesome\scss\_icons.scss" />
+    <Content Include="asset\admin\vendor\font-awesome\scss\_larger.scss" />
+    <Content Include="asset\admin\vendor\font-awesome\scss\_list.scss" />
+    <Content Include="asset\admin\vendor\font-awesome\scss\_mixins.scss" />
+    <Content Include="asset\admin\vendor\font-awesome\scss\_path.scss" />
+    <Content Include="asset\admin\vendor\font-awesome\scss\_rotated-flipped.scss" />
+    <Content Include="asset\admin\vendor\font-awesome\scss\_screen-reader.scss" />
+    <Content Include="asset\admin\vendor\font-awesome\scss\_spinning.scss" />
+    <Content Include="asset\admin\vendor\font-awesome\scss\_stacked.scss" />
+    <Content Include="asset\admin\vendor\font-awesome\scss\_variables.scss" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -1473,6 +1664,11 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\controller\nhanviencontrollers.js" />
+    <Content Include="Scripts\pluggin\jquery.dataTables.min.css" />
+    <Content Include="Scripts\pluggin\jquery.dataTables.min.js" />
+    <Content Include="Scripts\pluggin\jquery.twbsPagination.min.js" />
+    <Content Include="Scripts\pluggin\mustache.min.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
@@ -1485,7 +1681,9 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Views\Web.config" />
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\TrangChu\Index.cshtml" />
@@ -1496,15 +1694,20 @@
     <Content Include="Views\Shared\Dangki.cshtml" />
     <Content Include="Views\Shared\DangNhap.cshtml" />
     <Content Include="Views\Video\ChiTietVideo.cshtml" />
+    <Content Include="Views\NgheNhac\Search.cshtml" />
+    <Content Include="Views\TinTuc\Index.cshtml" />
+    <Content Include="Views\TabBaiHat\Index.cshtml" />
+    <Content Include="Views\TinTuc\ListTinTuc.cshtml" />
+    <Content Include="Views\Danhsachcasi\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Views\Base\" />
     <Folder Include="asset\admin\data\" />
     <Folder Include="asset\admin\less\" />
-    <Folder Include="asset\admin\vendor\" />
     <Folder Include="asset\client\css\fonts\" />
-    <Folder Include="Data\" />
+    <Folder Include="Data\files\" />
+    <Folder Include="Data\flash\" />
+    <Folder Include="Data\images\a\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

@@ -16,10 +16,10 @@
                 type: "POST",
                 success: function (response) {
                     if (response.status == true) {
-                        btn.text('Kích hoạt');
+                        btn.html("<p class='label label-success'> Active </p>");
                     }
                     else {
-                        btn.text('Khóa');
+                        btn.html("<p class='label label-danger'> Locked</p>");
                     }
                 }
             });

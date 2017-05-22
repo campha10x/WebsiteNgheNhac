@@ -16,7 +16,7 @@
         <a href="#" class="login overlayLink-login">  Đăng nhập </a>
        } 
 </div>
-<div class="overlay-login" style="display:none" ;>
+<div class="overlay-login" style="display:none;">
     <div class="login-wrapper">
         <div class="login-content">
             <a class="close close-login">x</a>
@@ -61,7 +61,7 @@
                             <div class="row">
                                 <div class="col-md-3"></div>
                                 <div class="col-md-8">
-                                    <button type = "submit" class="btn btn-primary" id ="btnSubmit" style="width:100%;">ĐĂNG NHẬP</button>
+                                    <button  class="btn btn-primary" id ="btnSubmit" style="width:100%;">ĐĂNG NHẬP</button>
                                 </div>
                             </div>
                         </div>
@@ -70,8 +70,12 @@
             <div style="width:35%; float:left; ">
                 <div style="margin-left:30px; margin-top:50px;">
                     <div class="row">
-                        <img src="~/asset/client/images/TieuDeKoDoi/1491342558_square-facebook.png" />
-                        <a href="#">Đăng nhập qua Facebook</a>
+                        @*<img src="~/asset/client/images/TieuDeKoDoi/1491342558_square-facebook.png" />
+                        <a href="#">Đăng nhập qua Facebook</a>*@
+                        <a class="btn btn-facebook" href="/TrangChu/LoginFacebook">
+                            <i class="fa fa-facebook"></i>
+                            Đăng nhập bằng Facebook
+                        </a>
                     </div>
                     <div class="row" style="margin-top:10px;">
                         <img src="~/asset/client/images/TieuDeKoDoi/1491342699_square-google-plus.png" />

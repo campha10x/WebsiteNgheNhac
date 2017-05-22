@@ -934,8 +934,213 @@ div.overlay-login {
 {
     display:block;
 }
+.p-auto
+{
+    color:#b9b9b9;
+    font-size:15px;
+        position: absolute;
+    right: 0;
+    text-transform: none;
+    top: 9px;
+}
+.switch-auto.active
+{
+    background: rgba(0,0,0,0) url('../images/ChiTietVideo/auto_active.png') no-repeat scroll left top;
+}
+.switch-auto
+{
+        background: rgba(0,0,0,0) url('../images/ChiTietVideo/auto_active.png') no-repeat scroll left top;
+        display: inline-block;
+    float: right;
+    height: 16px;
+    margin-left: 8px;
+    width: 27px;
+}
+.keeng-video-collect 
+{
+    position:relative;
+}
+/*.wrap-keeng-video
+{
+    overflow:hidden;
+}*/
+.video-form-other .kv-info
+{
+    position:relative;
+}
+.video-form-other .kv-info .kv-info-h3 a
+{
+    color:#4e4e4e;
+}
+.video-form-other .kv-info .kv-info-h3,.video-form-other .kv-info-p
+{
+    padding:0;
+    margin-top:-9px;
+}
+.video-form-other .kv-info-p a
+{
+    color:#333;
+}
+.video-form-other .kv-info
+{
+    position:relative;
+    background:0;
+    left:0;
+    top:20px;
+}
+.keeng-video .kv-content
+{
+    margin-bottom:0;
+}
+.video-form-other .kv-info-p .kv-info-view
+{
+    color:#9e9e9e;
+}
+.kv-info-p .kv-info-view
+{
+    display: inline-block;
+}
 /*--------------------DANG NHAP-----------------------------------------*/
 #lblError
 {
      color:red;
+}
+/*-------------------Tin Tuc-------------------------------*/
+.keeng-detail-news
+{
+    padding:0 10px;
+}
+.kdn-h1
+{
+    background: #fff none repeat scroll 0 0;
+    font-size: 26px;
+    line-height: 30px;
+    overflow: hidden;
+    width: 100%;
+    font-weight: normal;
+    margin-bottom: 10px;
+}
+.kdn-content
+{
+    line-height:24px;
+}
+.kdn-content p
+{
+    font-family:Arial,Helvetica,sans-serif!important;
+    font-size: 17px!important;
+    line-height: 24px;
+    margin-bottom: 10px;
+}
+.show-blog-item
+{
+    margin-bottom: 15px;
+    overflow: hidden;
+    padding: 0 10px;
+}
+.blog-lnk-img
+{
+        float: left;
+    height: 90px;
+    width: 160px;
+}
+.blog-lnk-img img
+{
+        display: block;
+    height: 90px;
+    width: 160px;
+}
+.blog-info
+{
+    margin-left: 175px;
+    margin-top: -18px;
+}
+.blog-info-h3
+{
+        font-size: 16px;
+    font-weight: bold;
+    line-height: 20px;
+    margin-bottom: 5px;
+}
+.blog-info-p
+{
+        font-size: 14px;
+}
+
+/*Danh sach ca si*/
+#slider_owl_keeng
+{
+    padding: 0 10px;
+}
+.slider-owl-singer
+{
+    margin-bottom:20px;
+}
+.slider-owl-item
+{
+    position:relative;
+    display:block;
+}
+.info-artice
+{
+    background:rgba(0,0,0,0) url("../images/ver3_10.png") repeat-x scroll left bottom;
+        bottom: 0;
+    height: 155px;
+    position: absolute;
+    width: 100%;
+}
+.info-artice .info-artice-h3
+{
+    bottom: 0;
+    color: #fff;
+    font-size: 25px;
+    font-weight: normal;
+    line-height: 28px;
+    padding: 15px;
+    position: absolute;
+}
+.csk-tab
+{
+      height:32px;
+    border-bottom: 1px solid #f0f0f0;
+    margin-bottom: 15px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+.csk-tab-p
+{
+  
+     float: right;
+    font-size: 16px;
+}
+.csk-tab-p .csk-tab-lnk
+{
+    float: left;
+    margin-left: 15px;
+    margin-right: 10px;
+    padding-bottom: 10px;
+}
+.csk-item
+{
+    margin-bottom: 15px;
+    padding: 0 10px;
+}
+.csk-item .csk-lnk-img
+{
+        display: block;
+    margin-bottom: 10px;
+    width: 100%;
+}
+.csk-item .csk-lnk-img img
+{
+        display: block;
+    width: 100%;
+}
+.csk-info .csk-info-h3
+{
+        margin-bottom: 5px;
+}
+.csk-info .csk-info-h3 a
+{
+    font-size:16px;
+    font-weight: normal;
 }

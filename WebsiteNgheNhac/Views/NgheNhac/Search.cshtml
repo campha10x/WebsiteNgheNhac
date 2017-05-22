@@ -1,0 +1,130 @@
+﻿
+@{
+    ViewBag.Title = "Search";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+    var BaiHatSearch = (List<Model.ViewModel.BaiHat_CaSiModel>)ViewBag.BaiHatSearch;
+   int soBaiHat=BaiHatSearch.Count();
+}
+
+<div class="container">
+    <div class="col-md-8">
+        <div style="border-bottom:10px;border-bottom:1px solid #dbdada;">
+              <span>Tìm thấy @soBaiHat bài hát với từ khóa</span>
+            @*Tìm thấy 4850 bài hát; 364 Album; 610 Video với từ khóa*@
+            <span style="color:#7aaf16;">
+               "@ViewData["keyword"]" 
+            </span>
+        </div>
+        <div id="search_result">
+            <div class="collect-keeng-audio">
+                @if (soBaiHat > 0)
+                {
+                    <div class="keeng-title-h2">BÀI HÁT</div>
+                    foreach (var item in @ViewBag.BaiHatSearch)
+                {
+                        <div class="ka-content audio-content">
+                            <a href="#">
+                                <img title="bao giờ lấy chồng" height="80px" src="@item.urlImage" />
+                            </a>
+                            <div class="ka-info">
+                                <h3 class="ka-info-h3">
+                                    <a href="#">@item.TenBaiHat</a>
+                                </h3>
+                                <p class="ka-info-singer">
+                                    <a>@item.NgheDanh</a>
+                                    <span class="ka-info-view">
+                                        <img src="~/asset/client/images/TrangChu/ver3_09_b.png" />
+                                        @item.LuotNghe
+                                    </span>
+                                </p>
+                            </div>
+                        </div>
+                    }
+                }
+
+                @*<div class="ka-content audio-content">
+                    <a href="#">
+                        <img title="bao giờ lấy chồng" height="80px" src="~/asset/client/images/TrangChu/xDYvjupOhPQD3oIkQDMV58999bf984030_103_103.jpg" />
+                    </a>
+                    <div class="ka-info">
+                        <h3 class="ka-info-h3">
+                            <a href="#">bao giờ lấy chồng</a>
+                        </h3>
+                        <p class="ka-info-singer">
+                            <a>Bích Phương</a>
+                            <span class="ka-info-view">
+                                <img src="~/asset/client/images/TrangChu/ver3_09_b.png" />
+                                10902670
+                            </span>
+                        </p>
+                    </div>
+                </div>*@
+            </div>
+            @if (soBaiHat > 0)
+            {
+                <p style="text-align: center" class="news-view-more">
+                    <a class="news-view-more-lnk" id="box-hot-more-detail" href="#">Xem thêm</a>
+                </p>
+            }
+            
+            <div class="collect-keeng-video">
+                <h2 class="keeng-title-h2">VIDEO</h2>
+                <div class="ka-content audio-content">
+                    <a href="#">
+                        <img title="bao giờ lấy chồng" height="80px" src="~/asset/client/images/TrangChu/xDYvjupOhPQD3oIkQDMV58999bf984030_103_103.jpg" />
+                    </a>
+                    <div class="ka-info">
+                        <h3 class="ka-info-h3">
+                            <a href="#">bao giờ lấy chồng</a>
+                        </h3>
+                        <p class="ka-info-singer">
+                            <a>Bích Phương</a>
+                            <span class="ka-info-view">
+                                <img src="~/asset/client/images/TrangChu/ver3_09_b.png" />
+                                10902670
+                            </span>
+                        </p>
+                    </div>
+                </div>
+                <div class="ka-content audio-content">
+                    <a href="#">
+                        <img title="bao giờ lấy chồng" height="80px" src="~/asset/client/images/TrangChu/xDYvjupOhPQD3oIkQDMV58999bf984030_103_103.jpg" />
+                    </a>
+                    <div class="ka-info">
+                        <h3 class="ka-info-h3">
+                            <a href="#">bao giờ lấy chồng</a>
+                        </h3>
+                        <p class="ka-info-singer">
+                            <a>Bích Phương</a>
+                            <span class="ka-info-view">
+                                <img src="~/asset/client/images/TrangChu/ver3_09_b.png" />
+                                10902670
+                            </span>
+                        </p>
+                    </div>
+                </div>
+                <div class="ka-content audio-content">
+                    <a href="#">
+                        <img title="bao giờ lấy chồng" height="80px" src="~/asset/client/images/TrangChu/xDYvjupOhPQD3oIkQDMV58999bf984030_103_103.jpg" />
+                    </a>
+                    <div class="ka-info">
+                        <h3 class="ka-info-h3">
+                            <a href="#">bao giờ lấy chồng</a>
+                        </h3>
+                        <p class="ka-info-singer">
+                            <a>Bích Phương</a>
+                            <span class="ka-info-view">
+                                <img src="~/asset/client/images/TrangChu/ver3_09_b.png" />
+                                10902670
+                            </span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <p style="text-align: center" class="news-view-more">
+                <a class="news-view-more-lnk" id="box-hot-more-detail" href="#">Xem thêm</a>
+            </p>
+        </div>
+    </div>
+
+

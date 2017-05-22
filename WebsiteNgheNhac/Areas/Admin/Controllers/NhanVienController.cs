@@ -9,112 +9,167 @@ using WebsiteNgheNhac.Common;
 using PagedList;
 using PagedList.Mvc;
 using System.Globalization;
+using System.Web.Script.Serialization;
+using System.Text.RegularExpressions;
+using System.Text;
 
 namespace WebsiteNgheNhac.Areas.Admin.Controllers
 {
-    public class NhanVienController : Controller
+    public class NhanVienController : BaseController
     {
         public static List<SelectListItem> listChucvu ;
-      
-    // GET: Admin/NhanVien
-         public ActionResult Index(string searchString,int page=1,int pageSize=1)
-
+        private WebsiteNgheNhacDbContext db ;
+        public NhanVienController()
         {
           
-            var dao = new NhanVienDao();
-            var model = dao.ListAllPaging(searchString,page, pageSize);
-            ViewBag.SearchString = searchString;
-            return View(model);
+            db = new WebsiteNgheNhacDbContext();
         }
-        public void SetViewBag(long? selectedId=null)
+        // GET: Admin/NhanVien
+        public ActionResult Index()
         {
-            var dao = new QuyenDao();
-            ViewBag.ListQuyen = dao.ListAll();
-              listChucvu = new List<SelectListItem>() {         
-                new SelectListItem() { Value = "0",Text = "Giám đốc",Selected = true},
-                new SelectListItem() { Value = "1",Text = "Trưởng phòng",Selected = false },
-                new SelectListItem() { Value = "2",Text = "Nhân viên",Selected = false }
-            };
-
-        ViewBag.listChucvu = listChucvu;
             
+            return View();
+        }
+        public static string convertToUnSign3(string s)
+        {
+            Regex regex = new Regex("\\p{IsCombiningDiacriticalMarks}+");
+            string temp = s.Normalize(NormalizationForm.FormD);
+            return regex.Replace(temp, String.Empty).Replace('\u0111', 'd').Replace('\u0110', 'D');
         }
         [HttpGet]
-        public ActionResult Create()
+        public JsonResult LoadData(string name,string status,int page,int pageSize=2)
         {
-            SetViewBag();
-            return View();
-        }
-        [HttpGet]
-        public ActionResult Edit(int id)
-        {
-            var nv = new NhanVienDao().ViewDetail(id);
-            SetViewBag(1);
-            return View(nv);
-        }
-        [HttpPost]
-        public ActionResult Edit(tbl_NhanVien nv)
-        {
-            if(ModelState.IsValid)
+            db.Configuration.ProxyCreationEnabled = false;
+            IEnumerable<tbl_NhanVien> model = db.tbl_NhanVien;
+            if (!string.IsNullOrEmpty(name))
             {
-                var dao = new NhanVienDao();
-                var selectedChucvu = listChucvu.FirstOrDefault(x => x.Value == nv.ChucVu);
-                string tenChucVu = (selectedChucvu == null ? string.Empty : selectedChucvu.Text);
-                if(!string.IsNullOrEmpty(nv.Password))
-                {
-                    var encrytedMd5Pas = Encryptor.MD5Hash(nv.Password);
-                    nv.Password = encrytedMd5Pas.ToString();
-                }
-                nv.ChucVu = tenChucVu;
-                var result = dao.Update(nv);
-                if(result)
-                {
-                    return RedirectToAction("Index","NhanVien");
-                }
-                else
-                {
-                    ModelState.AddModelError("","Cập nhật nhân viên thành công!");
-                }
+                model = model.Where(x => convertToUnSign3(x.tenNV.ToLower()).Contains(convertToUnSign3(name.ToLower())));
             }
-            return View();
-        }
-        [HttpPost]
-        public ActionResult Create(tbl_NhanVien nv)
-        {
-            if(ModelState.IsValid)
+              
+            if(!string.IsNullOrEmpty(status))
             {
-                var dao = new NhanVienDao();
-                var selectedChucvu = listChucvu.FirstOrDefault(x => x.Value == nv.ChucVu);
-                string tenChucVu = (selectedChucvu == null ? string.Empty : selectedChucvu.Text);
-                var encrytedMd5Pas = Encryptor.MD5Hash(nv.Password);
-                nv.Password = encrytedMd5Pas.ToString();
-                nv.ChucVu = tenChucVu;
-                long id = dao.Insert(nv);
-                if(id>0)
-                {
-                    return RedirectToAction("Index","NhanVien");
-                }
-                else
-                {
-                    ModelState.AddModelError("","Thêm nhân viên thành công!");
-                }
+                var statusBool = bool.Parse(status);
+                model = model.Where(x => x.Status == statusBool);
             }
-            return View();
-        }
-        [HttpDelete]
-        public ActionResult Delete(int id)
-        {
-            new NhanVienDao().Delete(id);
-            return RedirectToAction("Index");
-        }
-        [HttpPost]
-        public JsonResult ChangeStatus(long id)
-        {
-            var result = new NhanVienDao().ChangeStatus(id);
+            int totalRow = model.Count(); 
+            model = model.OrderBy(x=>x.Id).Skip((page-1)*pageSize).Take(pageSize);
+           
             return Json(new
             {
-                status = result
+                total = totalRow,
+                data = model,
+                status = true
+            }, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult GetItems()
+        {
+            var dropdownitems = db.tbl_Quyen.ToList();
+            var items = dropdownitems.Select(s => new SelectListItem { Text = s.TenQuyen, Value = s.Id.ToString() }).AsEnumerable();
+            return Json(items, JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public JsonResult SaveData(string strEmployee)
+        {
+            JavaScriptSerializer serializer = new JavaScriptSerializer();
+            tbl_NhanVien employee = serializer.Deserialize<tbl_NhanVien>(strEmployee);
+            bool status = false;
+            string message = string.Empty;
+            //add new employee if id = 0
+            if (employee.Id == 0)
+            {
+                db.tbl_NhanVien.Add(employee);
+                try
+                {
+                    db.SaveChanges();
+                    status = true;
+                }
+                catch (Exception ex)
+                {
+                    status = false;
+                    message = ex.Message;
+                }
+            }
+            else
+            {
+                //update existing DB
+                //save db
+                var entity = db.tbl_NhanVien.Find(employee.Id);
+                entity.tenNV = employee.tenNV;
+                entity.NgaySinh = employee.NgaySinh;
+                entity.Status = employee.Status;
+                entity.gioitinh = employee.gioitinh;
+                entity.ChucVu = employee.ChucVu;
+                entity.Id_Quyen = employee.Id_Quyen;
+                entity.UserName = employee.UserName;
+                entity.Password = employee.Password;
+                entity.Status = employee.Status;
+                entity.Luong = employee.Luong;
+
+                try
+                {
+                    db.SaveChanges();
+                    status = true;
+                }
+                catch (Exception ex)
+                {
+                    status = false;
+                    message = ex.Message;
+                }
+
+            }
+
+            return Json(new
+            {
+                status = status,
+                message = message
             });
+        }
+
+        [HttpPost]
+        public JsonResult Update(string model)
+        {
+            JavaScriptSerializer serializer = new JavaScriptSerializer();
+            tbl_NhanVien nv = serializer.Deserialize<tbl_NhanVien>(model);
+            //var entity = new NhanVienDao().GetById(nv.Id);
+            var entity = db.tbl_NhanVien.Single(e=>e.Id==nv.Id);
+            entity.Luong = nv.Luong;
+            db.SaveChanges();
+            return Json(new {
+                status=true
+            });
+        }
+        [HttpGet]
+        public JsonResult GetDetail(long Id)
+        {
+            db.Configuration.ProxyCreationEnabled = false;
+            var employee = db.tbl_NhanVien.Find(Id);
+            return Json(new
+            {
+                data = employee,
+                status = true
+            }, JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public JsonResult Delete(int id)
+        {
+            var entity = db.tbl_NhanVien.Find(id);
+            db.tbl_NhanVien.Remove(entity);
+            try
+            {
+                db.SaveChanges();
+                return Json(new{
+                    status = true 
+                });
+            }
+            catch (Exception ex)
+            {
+                return Json(new
+                {
+                    status = false,
+                    message = ex.Message
+                });
+            }
         }
     }
 }

@@ -111,22 +111,6 @@ window.onload = initPlayer;
 $(document).ready(function () {
 
    
-    //$(".overlayLink-signin").click(function(event){
-    //    event.preventDefault();
-    //    $(".overlay-signin").fadeToggle("fast");
-    //});
-	
-    //$(".close-signin").click(function () {
-    //    $(".overlay-signin").fadeToggle("fast");
-    //});
-	
-    //$(document).keyup(function(e) {
-    //    if (e.keyCode == 27 && $(".overlay-signin").css("display") != "none") {
-    //        event.preventDefault();
-    //        $(".overlay-signin").fadeToggle("fast");
-    //    }
-    //});
-    
         $(".overlayLink-login").click(function (event) {
             event.preventDefault();
             $(".overlay-login").fadeToggle("fast");

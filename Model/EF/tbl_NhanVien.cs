@@ -51,6 +51,8 @@
         public bool Status { get; set; }
         public virtual tbl_Quyen tbl_Quyen { get; set; }
 
+        [DataType("decimal(18,0")]
+        public decimal Luong { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_TinTuc> tbl_TinTuc { get; set; }
 

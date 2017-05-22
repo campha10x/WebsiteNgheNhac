@@ -17,5 +17,9 @@ namespace Model.ViewModel
         public string urlImage { get; set; }
         public string NgheDanh { get; set; }
         public string Message { get; set; }
+        public int? Ord { get; set; }
+
+        public long ID_Casi { get; set; }
+        public string TenTheLoai { get; set; }
     }
 }

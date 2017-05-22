@@ -2,7 +2,8 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
-     var  slides = (List<Model.EF.tbl_Slide_GioiThieu>)ViewBag.SlideGioiThieu;
+    var  slides = (List<Model.EF.tbl_Slide_GioiThieu>)ViewBag.SlideGioiThieu;
+    List<Model.EF.tbl_TinTuc> listTinTuc = (List<Model.EF.tbl_TinTuc>)ViewBag.ListTinTuc;
     int i = 0;
 }
 <div class="container slide">
@@ -34,10 +35,43 @@
                 <img src="~/asset/client/images/TrangChu/SlsVuGMXRFBfVBiWN4V458981bd4772c0.jpg" width="100%" />
             </a>
         </div>
-      
-        <div class="keeng-news">
-            <h2 class="keeng-title-h2">CẢM XÚC ÂM NHẠC</h2>
-            <div class="wrap-keeng-news">
+          <div class="keeng-news">
+                <h2 class="keeng-title-h2">CẢM XÚC ÂM NHẠC</h2>
+              <div class="wrap-keeng-news">
+                  <div class="col-md-6 keeng-news-left">
+                      <a href="#" style="display:block;">
+                          <img src="@listTinTuc[0].urlHinhAnh" style="width:100%;" />
+                      </a>
+                  </div>
+                  <div class="col-md-6 keeng-news-right">
+                      <h3 class="news-right-h3">
+                          <a href="@Url.Action("Index", "tin-tuc", new { @Id=@listTinTuc[0].Id})" title="Hôm nay em mệt, cả vũ trụ chỉ toàn người lạ, bình yên may chỉ có anh…">
+                            @listTinTuc[0].TieuDe
+                          </a>
+                      </h3>
+                      @*<p class="news-right-p">*@
+                          @Html.Raw("<div class='news-right-p'>" + @listTinTuc[0].TomTat + "</div>")
+                      @*</p>*@
+                      <ul class="news-right-ul">
+                          <li>
+                              <a href="@Url.Action("Index", "tin-tuc", new { @Id=@listTinTuc[1].Id})">
+                                  @Html.Raw(@listTinTuc[1].TieuDe)
+                              </a>
+                          </li>
+                          <li>
+                              <a href="@Url.Action("Index", "tin-tuc", new { @Id=@listTinTuc[2].Id})">
+                                  @Html.Raw(@listTinTuc[2].TieuDe)
+                              </a>
+                          </li>
+                          <li>
+                              <a href="@Url.Action("Index", "tin-tuc", new { @Id=@listTinTuc[3].Id})">
+                                  @Html.Raw(@listTinTuc[3].TieuDe)
+                              </a>
+                           </li>
+                      </ul>
+                  </div>
+              </div>
+            @*<div class="wrap-keeng-news">
                 <div class="col-md-6 keeng-news-left">
                     <a href="#">
                         <img src="~/asset/client/images/TrangChu/a3uQw0KQLDJ5v8TmtAEy58ae4584a165b.jpg" width="100%" />
@@ -46,11 +80,11 @@
                 <div class="col-md-6 keeng-news-right">
                     <h3 class="news-right-h3">
                         <a href="#" title="Hôm nay em mệt, cả vũ trụ chỉ toàn người lạ, bình yên may chỉ có anh…">
-                            Hôm nay em mệt, cả vũ trụ chỉ toàn người lạ, bình yên may chỉ có anh…
+                            Tháng 5 về, em hãy cứ rũ bỏ nỗi buồn mà 
                         </a>
                     </h3>
                     <p class="news-right-p">
-                        Hôm nay em mệt rã rời, chỉ muốn về nhà nấu cho anh bữa tối, rồi cùng xem một bộ phim cho đến khi em ngủ thiếp đi trong vòng tay anh…
+                        Đã đến lúc gác lại chuyện xưa, trên đường đời trải đầy những nụ hoa, luôn có một nụ hoa nào đó thuộc về em. Điều quan trọng là em cần bước tiếp, 
                     </p>
                     <ul class="news-right-ul">
                         <li>
@@ -64,7 +98,7 @@
                         </li>
                     </ul>
                 </div>
-            </div>
+            </div>*@
         </div>
         <!--Box nhac hot-->
         <div class="keeng-all-music">
@@ -77,7 +111,7 @@
                     <div id="box-home-hot-@i" class="col-md-6">
                         <div class="keeng-video">
                             <div class="kv-content">
-                                <a class="kv-lnk" href="#">
+                                <a class="kv-lnk" href="../video/ChiTietVideo-@item.Id">
                                     <img class="kv-img" src="@item.urlImage" />
                                     <span class="kv-sp-icon">
                                         <img class="kv-img-icon" src="~/asset/client/images/TrangChu/ver3_08.png" />
@@ -86,7 +120,7 @@
 
                                 <div class="kv-info">
                                     <h3 class="kv-info-h3">
-                                        <a href="#">@item.Ten_Video</a>
+                                        <a href="../video/ChiTietVideo-@item.Id">@item.Ten_Video</a>
                                     </h3>
                                     <p class="kv-info-p">
                                         <a class="kv-info-singer">@item.NgheDanh</a>
@@ -107,7 +141,7 @@
                                     <span id="keeng-video-comment-229705">12377</span>
                                 </a>
                             </div>
-                            <div class="keeng-album">
+                            @*<div class="keeng-album">
                                 <div class="ka-content">
                                     <a class="ka-lnk">
                                         <img src="~/asset/client/images/TrangChu/ktXG1Wq00bmY2MlT3SQt58ae51cab5c33_103_103.jpg" title="Remix Collection 2017" alt="Remix Collection 2017" />
@@ -134,7 +168,7 @@
                                         <span id="keeng-video-comment-229705">12377</span>
                                     </a>
                                 </div>
-                            </div>
+                            </div>*@
                             <div class="keeng-album audio-content">
                                 <div class="ka-content">
                                     <a class="ka-lnk">
@@ -226,8 +260,10 @@
             </div>
         </div>
     </div>
-    @section jsFooter{
+    @*@section jsFooter{
+    <script src="~/asset/client/js/controller/baseController.js"></script>
         <script src="/asset/client/js/controller/DangNhap.js"></script>
-    }
+    <script src="~/asset/client/js/controller/Dangki.js"></script>
+    }*@
 
    

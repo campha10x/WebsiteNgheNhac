@@ -1,12 +1,13 @@
-﻿
+﻿@using Model.ViewModel
 @{
     ViewBag.Title = "ChiTietVideo";
     Layout = "~/Views/Shared/_Layout.cshtml";
+   
 }
 <div class="container">
     <div class="col-md-8">
         <div style="background:#01141a none repeat scroll 0 0">
-            <div class="info-keeng-player">
+            @*<div class="info-keeng-player">
                 <h1 class="info-player-h1">
                     <span> Trò Đùa Của Tạo Hóa (Lô Tô OST)</span>
                     <a class="info-player-singer" id="video_singer">- Bùi Anh Tuấn</a>
@@ -21,6 +22,22 @@
                     Lượt xem
                     <span id="video_listen"> 87.018</span>
                 </p>
+            </div>*@
+            <div class="info-keeng-player">
+                <h1 class="info-player-h1">
+                    <span style="color:#90be04;font-size:22px;">@ViewBag.Video[0].Ten_Video</span>
+                    <a class="info-player-singer" id="video_singer">- @ViewBag.Video[0].NgheDanh </a>
+                </h1>
+                <p class="info-player-p">
+                    <span class="show_web">
+                        Đăng bởi:
+                        <span id="author"> 1673***361 </span>
+                        &nbsp;|&nbsp; Thể loại:
+                        <span id="cat_name"> @ViewBag.Video[0].TenTheLoai</span>
+                    </span>
+                    Lượt xem:
+                    <span id="video_listen">@ViewBag.Video[0].LuotXem</span>
+                </p>
             </div>
             <div>
 
@@ -28,7 +45,7 @@
             <video id="example_video_1" class="video-js vjs-default-skin" controls preload="none" width="730" height="385"
                    poster="http://video-js.zencoder.com/oceans-clip.png"
                    data-setup="{}">
-                <source src="~/asset/client/Audio_Video/Video/Chuc Chong Ngu Ngon.mp4" type='video/mp4' />
+                <source src="@ViewBag.Video[0].Url_Video" type='video/mp4' />
                 <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
             </video>
         </div>
@@ -73,7 +90,80 @@
                 <img src="~/asset/client/images/ChiTietVideo/4NgiEQ3CaJsjWUTUKdRp58e1ee9f91279.jpg" height="93"/>
             </a>
         </div>
+       
+        <div class="keeng-video-collect video-form-other" id="videoSameSinger">
+            <h2 class="keeng-title-h2">
+                <a href="#">VIDEO ĐỀ XUẤT</a>
+                <p class="p-auto">Auto play 
+                    <a class="switch-auto active" href="javascript:void(0);"></a>
+                </p>
+            </h2>
+            @foreach (var item in ViewBag.ListVideo as List<Video_CaSiModel>)
+            {
+                <div class="wrap-keeng-video">
+                    <div style="height:200px;" id="kv-content-229847" class="col-sm-4 keeng-video">
+                        <div class="kv-content">
+                            <a class="kv-lnk" href="#">
+                                <img class="kv-img" src="@item.urlImage" />
+                                <span class="kv-sp-icon">
+                                    <img height="59" src="~/asset/client/images/TrangChu/ver3_08.png" />
+                                </span>
+                            </a>
+                            <div class="kv-info">
+                                <h3 class="kv-info-h3">
+                                    <a href="#" title="Não cá vàng">@item.Ten_Video</a>
+                                </h3>
+                                <p class="kv-info-p">
+                                    <a class="kv-info-singer">@item.NgheDanh</a>
+                                    <span class="kv-info-view">
+                                        <img height="10" src="~/asset/client/images/ChiTietVideo/ver3_09_c.png" />
+                                        @item.LuotXem
+                                    </span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            @*<div class="wrap-keeng-video">
+                <div style="height:200px;" id="kv-content-229847" class="col-sm-4 keeng-video">
+                    <div class="kv-content">
+                        <a class="kv-lnk" href="#">
+                            <img class="kv-img" src="~/asset/client/images/ChiTietVideo/EYqPh5iG7tY0vSvGFHMJ58bcd4ae2ce1b.jpg" />
+                            <span class="kv-sp-icon">
+                                <img height="59" src="~/asset/client/images/TrangChu/ver3_08.png" />
+                            </span>
+                        </a>
+                        <div class="kv-info">
+                            <h3 class="kv-info-h3">
+                                <a href="#" title="Não cá vàng">Não Cá Vàng</a>
+                            </h3>
+                            <p class="kv-info-p">
+                                <a class="kv-info-singer">Lou Hoàng ft OnlyC</a>
+                                <span class="kv-info-view">
+                                    <img height="10" src="~/asset/client/images/ChiTietVideo/ver3_09_c.png" />
+                                    459.279
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>*@
+        </div>
     </div>
-
+<script type="text/javascript">
+    $('.switch-auto').click(function () {
+        debugger;
+        if ($('.switch-auto').hasClass('active'))
+        {
+            $('.switch-auto').removeClass("active");
+        }
+        else
+        {
+            $('.switch-auto').addClass('active');
+        }
+       
+    });
+</script>
 
 

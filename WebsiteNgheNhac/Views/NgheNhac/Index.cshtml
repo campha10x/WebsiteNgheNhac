@@ -1,4 +1,4 @@
-﻿@model Model.EF.tbl_BaiHat
+﻿@model  IEnumerable<Model.ViewModel.BaiHat_CaSiModel>
 
 @{
     ViewBag.Title = "Index";
@@ -11,14 +11,16 @@
         <div class="keeng-info-rank">
             <div class="wrap-info-artice">
                 <a href="#" class="info-artice-img">
-                    <img id="song_singer_img" src="~/asset/client/images/TrangChu/xDYvjupOhPQD3oIkQDMV58999bf984030_103_103.jpg" />
+                    @*<img id="song_singer_img" src="~/asset/client/images/TrangChu/xDYvjupOhPQD3oIkQDMV58999bf984030_103_103.jpg" />*@
+                    <img id="song_singer_img" src="@Model.First().urlImage" />
                 </a>
                 <div class="info-artice-right">
                     <h3 class="info-artice-name">
                         <a>BXH BÀI HÁT VIỆT NAM</a>
                     </h3>
                     <p class="info-album-count">
-                        Lượt nghe: 3.566.046
+                        @*Lượt nghe: 3.566.046*@
+                        Lượt nghe: <span>@Model.First().LuotNghe</span>
                     </p>
                 </div>
             </div>
@@ -26,28 +28,30 @@
         <div class="clearfix"></div>
         <div class="player-keeng">
             <div class="info-keeng-player">
-                <h1 class="info-player-h1">
-                    <span id="song_name" class="info-player-name">Bao Giờ Lấy Chồng</span>
-                    -
-                    <a id="song_singer_name" class="info-player-singer">Bích Phương</a>
-                </h1>
-                <p class="info-player-p">
-                    <span class="show_web">
-                        Sáng tác:
-                        <span id="author">Huỳnh Hiền Năng</span>
-                        |  Thể loại:
-                        <span id="song_cat">Pop Việt, Nhạc Việt</span>
-                        |
-                    </span>
-                    Lượt nghe:
-                    <span id="song_listen_no">8.970.355</span>
-                    |  Lượt tải:
-                    <span id="song_download_no">36476</span>
-                </p>
+              
+                    <h1 class="info-player-h1">
+                        <span id="song_name" class="info-player-name">@Model.First().TenBaiHat</span>
+                        -
+                        <a id="song_singer_name" class="info-player-singer">@Model.First().NgheDanh</a>
+                    </h1>
+                    <p class="info-player-p">
+                        <span class="show_web">
+                            Sáng tác:
+                            <span id="author">@Model.First().Hoten</span>
+                            |  Thể loại:
+                            <span id="song_cat">@Model.First().TenTheLoai</span>
+                            |
+                        </span>
+                        Lượt nghe:
+                        <span id="song_listen_no">@Model.First().LuotNghe</span>
+                        |  Lượt tải:
+                        <span id="song_download_no">@Model.First().LuotTai</span>
+                    </p>
             </div>
             <div id="player_playing" class="player-playing ">
                 <audio id="mytrack" preload='auto'>
-                    <source src="~/asset/client/Audio_Video/Noi-Nay-Co-Anh-Son-Tung-M-TP.mp3" type="audio/mp3">
+                    @*<source src="~/asset/client/Audio_Video/Noi-Nay-Co-Anh-Son-Tung-M-TP.mp3" type="audio/mp3">*@
+                    <source src="@Model.First().url_BaiHat" type="audio/mp3" />
                 </audio>
                 <div class="jp-audio">
                     <div class="jp-gui jp-interface">
@@ -110,6 +114,16 @@
                 <a href="#">
                     <img height="25" src="~/asset/client/images/TrangChu/web_ver3_16.png" class="lnk-player-social popup-download-song" />
                 </a>
+               
+                @*<a href="@Url.Action("DownloadFile",new { @filename= @Model.First().url_BaiHat })">
+                    <img height="25" src="~/asset/client/images/TrangChu/web_ver3_16.png" class="lnk-player-social popup-download-song" />
+                </a>*@
+
+                @*<a href="NgheNhac/DownloadFile @Model.First().url_BaiHat">
+                    <img height="25" src="~/asset/client/images/TrangChu/web_ver3_16.png" class="lnk-player-social popup-download-song" />
+                </a>*@
+
+                   <img height="25" src="~/asset/client/images/TrangChu/web_ver3_16.png" class="lnk-player-social popup-download-song" />
                 <a href="#">
                     <img height="25" src="~/asset/client/images/TrangChu/web_ver3_17.png" class="lnk-player-social popup-download-song" />
                 </a>

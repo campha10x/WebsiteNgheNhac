@@ -1,0 +1,122 @@
+﻿@model Model.EF.tbl_TinTuc
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layouts.cshtml";
+}
+@section header
+{
+    Sửa tin tức
+}
+@section jsFooter
+{
+    <script>
+            $('#btnSelectImage').on('click',function(e)
+            {
+                e.preventDefault();
+                var finder=new CKFinder();
+                finder.selectActionFunction = function (url)
+                {
+                    $('#txtImage').val(url);
+                }
+                finder.popup();
+            })
+            var editor = CKEDITOR.replace('txtContent', {
+                customConfig:'/asset/admin/js/Pluggin/ckeditor/config.js'
+            });
+            var editor = CKEDITOR.replace('txtTomTat', {
+                customConfig: '/asset/admin/js/Pluggin/ckeditor/config.js'
+            });
+    </script>
+}
+@using (Html.BeginForm("Edit", "TinTuc", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-md-offset-1">
+                    <a href="../Index" class="btn btn-primary ">Trở về</a>
+                    <input type="submit" value="Cập nhật" class="btn btn-default " />
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                <br />
+               
+                <div class="form-group">
+                    @Html.LabelFor(model => model.urlHinhAnh, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.urlHinhAnh, new { @class = "form-control", @id = "txtImage", @readonly = "readonly" })
+                        </div>
+                       <div class="col-md-2">
+                           <a id="btnSelectImage" href="#" class="btn btn-info">Chọn ảnh</a>
+                       </div>
+                        @Html.ValidationMessageFor(model => model.urlHinhAnh, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <br />
+                <br />
+                <div class="form-group">
+                    @Html.LabelFor(model => model.TieuDe, htmlAttributes: new { @class = "col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.TieuDe, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.TieuDe, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.TomTat, htmlAttributes: new { @class = "col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(model => model.TomTat, new { htmlAttributes = new { @class = "form-control" }, id = "txtTomTat" })
+                        @Html.ValidationMessageFor(model => model.TomTat, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.NoiDung, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(model => model.NoiDung, new { htmlAttributes = new { @class = "form-control" }, id = "txtContent" })
+                        @Html.ValidationMessageFor(model => model.NoiDung, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ngayviet, htmlAttributes: new { @class = "col-md-2" })
+                    <div class="col-md-3">
+                        @Html.TextBoxFor(model => model.ngayviet, new { @class = "form-control", @type = "date", @Value = @Convert.ToString(string.Format("{0:yyyy-MM-dd}", Model.ngayviet)) })
+                        @Html.ValidationMessageFor(model => model.ngayviet, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.id_nhanvien, htmlAttributes: new { @class = "col-md-2" })
+                    <div class="col-md-1">
+                        <input type="text" name="txtId" value="@Session["Id"].ToString()" readonly="readonly" class="form-control" />
+                    </div>
+                </div>
+               
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Url_BaiHat, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-6">
+                        @Html.TextBoxFor(model => model.Url_BaiHat, new { @type = "file",@class="btn btn-info" })
+                        @Html.ValidationMessageFor(model => model.Url_BaiHat, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Active, htmlAttributes: new { @class = "col-md-2" })
+                    <div class="col-md-1">
+                        @Html.CheckBoxFor(model => model.Active)
+                        @Html.ValidationMessageFor(model => model.Active, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  
+    
+}

@@ -11,11 +11,11 @@ CKEDITOR.editorConfig = function( config ) {
     config.syntaxhighlight_lang = 'csharp';
     config.syntaxhighlight_hideControls = true; 
     config.language = 'vi';
-    config.filebrowserBrowseUrl = '~/asset/admin/js/Pluggin/ckfinder/ckfinder.html',
+    config.filebrowserBrowseUrl = '/asset/admin/js/Pluggin/ckfinder/ckfinder.html',
     config.filebrowserImageBrowseUrl = '/asset/admin/js/Pluggin/ckfinder/ckfinder.html?type=Images',
     config.filebrowserFlashBrowseUrl = '/asset/admin/js/Pluggin/ckfinder/ckfinder.html?type=Flash',
     config.filebrowserUploadUrl = '/asset/admin/js/Pluggin/ckfinder/core/connector/aspx/connector.aspx?command=QuickUpload&type=Files&currentFolder=/archive/',
     config.filebrowserImageUploadUrl = '/Data',
     config.filebrowserFlashUploadUrl = '/asset/admin/js/Pluggin/ckfinder/core/connector/aspx/connector.aspx?command=QuickUpload&type=Flash'
-    CKFinder.setupCKEditor("null", '/asset/admin/js/Pluggin/ckfinder/');
+    CKFinder.setupCKEditor(null, '/asset/admin/js/Pluggin/ckfinder/');
 };
