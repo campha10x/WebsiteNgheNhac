@@ -32,6 +32,7 @@ namespace WebsiteNgheNhac.Controllers
             else
                 return new HttpStatusCodeResult(System.Net.HttpStatusCode.Forbidden);
         }
+        [HttpGet]
         public ActionResult Search(string keyword)
         {
             ViewData["keyword"] = keyword;

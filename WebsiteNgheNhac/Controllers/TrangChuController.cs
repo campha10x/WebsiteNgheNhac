@@ -109,7 +109,7 @@ namespace WebsiteNgheNhac.Controllers
 
         //}
         [HttpPost]
-        public JsonResult DangNhap(string Username, string Password,bool RememberPass)
+        public ActionResult DangNhap(string Username, string Password, bool RememberPass)
         {
             if(ModelState.IsValid)
             {
@@ -138,6 +138,7 @@ namespace WebsiteNgheNhac.Controllers
                         {
                             status = true
                         });
+                        //return RedirectToAction("Index");
                     }
                     else
                     {

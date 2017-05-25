@@ -24,7 +24,8 @@ namespace WebsiteNgheNhac
             routes.MapRoute(
              name: "Video",
               url: "video/{action}-{Id}",
-             defaults: new { controller = "Video", action = "ChiTietVideo", Id=UrlParameter.Optional }
+             defaults: new { controller = "Video", action = "ChiTietVideo", Id=UrlParameter.Optional },
+               namespaces: new[] { "WebsiteNgheNhac.Controllers" }
              );
 
             routes.MapRoute(
@@ -34,12 +35,7 @@ namespace WebsiteNgheNhac
               namespaces: new[] { "WebsiteNgheNhac.Controllers" }
             );
 
-            //routes.MapRoute(
-            //name: "TinTuc",
-            // url: "{tin-tuc}/{action}",
-            //defaults: new { controller = "TinTuc", action = "Index" },
-            // namespaces: new[] { "WebsiteNgheNhac.Controllers" }
-            //);
+           
             routes.MapRoute(
             name: "ListCasi",
              url: "{controller}/{action}",
@@ -54,18 +50,11 @@ namespace WebsiteNgheNhac
              namespaces: new[] { "WebsiteNgheNhac.Controllers" }
             );
 
-          
-            //routes.MapRoute(
-            //name: "TinTucAdmin",
-            // url: "{controller}/{action}-{Id}",
-            //defaults: new { controller = "TinTuc", action = "Index", Id = UrlParameter.Optional },
-            // namespaces: new[] { "WebsiteNgheNhac.Areas.Admin.Controllers" }
-            //);
-
             routes.MapRoute(
               name: "Search",
                url: "tim-kiem/{action}",
-              defaults: new { controller = "NgheNhac", action = "Search"}
+              defaults: new { controller = "NgheNhac", action = "Search"},
+              namespaces: new[] { "WebsiteNgheNhac.Controllers" }
               );
 
             routes.MapRoute(

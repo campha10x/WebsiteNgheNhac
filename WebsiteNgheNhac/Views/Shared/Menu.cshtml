@@ -1,12 +1,12 @@
 ﻿@model List<Model.EF.tbl_Menu> 
 
 <div class="menu">
-    <a href="#">
+    <a href="/TrangChu/Index">
         <img src="~/asset/client/images/TieuDeKoDoi/ver3_03.png" height="33" />
     </a>
     @foreach (var item in Model)
     {
-        <a href="@item.Link" target="@item.Target">@item.Text</a>
+        <a href="@item.Link" target="@item.Target" style="cursor:pointer;">@item.Text</a>
     }
 </div>
 

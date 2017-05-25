@@ -98,12 +98,12 @@
                     <a class="switch-auto active" href="javascript:void(0);"></a>
                 </p>
             </h2>
-            @foreach (var item in ViewBag.ListVideo as List<Video_CaSiModel>)
-            {
-                <div class="wrap-keeng-video">
+            <div class="wrap-keeng-video">
+                @foreach (var item in ViewBag.ListVideo as List<Video_CaSiModel>)
+                {
                     <div style="height:200px;" id="kv-content-229847" class="col-sm-4 keeng-video">
                         <div class="kv-content">
-                            <a class="kv-lnk" href="#">
+                            <a class="kv-lnk" href="../video/ChiTietVideo-@item.Id">
                                 <img class="kv-img" src="@item.urlImage" />
                                 <span class="kv-sp-icon">
                                     <img height="59" src="~/asset/client/images/TrangChu/ver3_08.png" />
@@ -123,8 +123,8 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            }
+                }
+            </div>
             @*<div class="wrap-keeng-video">
                 <div style="height:200px;" id="kv-content-229847" class="col-sm-4 keeng-video">
                     <div class="kv-content">

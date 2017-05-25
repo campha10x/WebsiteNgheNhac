@@ -1,7 +1,15 @@
+﻿
+
+@font-face {
+    font-family: 'arial';
+    src: url('../fontweb/arial.ttf') format('truetype');
+}
 body {
     margin: 0px;
-    font-family: "Times New Roman", Times, serif;
+    /*font-family: "Times New Roman", Times, serif;*/
+    font-family: 'arial';
     padding: 0px;
+   
 }
 
 a {
@@ -20,7 +28,7 @@ a {
 }
 
 #txtSearch {
-    width: 87%;
+    width: 100%;
     height: 38px;
     font-size: 19px;
     padding-right: 30px;
@@ -90,6 +98,18 @@ a:hover {
     line-height: 30px;
     text-transform: uppercase;
     float: left;
+}
+
+.menu
+{
+    overflow:hidden;
+}
+.active
+{
+    border-bottom:2px solid #fff;
+    color:#fff;
+    font-weight:bold;
+    line-height:33px;
 }
 /*--------------------------------Content----------------------------------*/
 .content {
@@ -166,8 +186,8 @@ a:hover {
 }
 
 .keeng-title-h2 {
-    font-size: 18px;
-    font-weight: normal;
+    font-size: 22px;
+    font-weight: bold;
     padding: 15px 10px;
 }
 
@@ -193,7 +213,7 @@ a:hover {
     }
 
 .kv-info-h3 {
-    font-size: 20px;
+    font-size: 15px;
 }
 
 .keeng-video {
@@ -209,6 +229,7 @@ a:hover {
 }
 
 .kv-lnk {
+    position:relative;
     display: block;
     height: 100%;
 }
@@ -278,8 +299,8 @@ a:hover .kv-sp-icon {
 }
 
 .audio-content .ka-lnk img {
-    height: 35px;
-    width: 35px;
+    height: 40px;
+    width: 40px;
 }
 
 .video-content .ka-lnk img {
@@ -311,6 +332,7 @@ a:hover .kv-sp-icon {
 .p-view-all .lnk-view-all:hover {
     border: 1px solid #7aaf14;
     color: #7aaf14;
+    cursor:pointer;
 }
 
 .news-left-img {
@@ -385,7 +407,7 @@ a:hover .kv-sp-icon {
 }
 
 .number-no {
-    bottom: 3px;
+    bottom: 0px;
     color: #fff;
     font-size: 14px;
     height: 22px;
@@ -487,8 +509,7 @@ a:hover .kv-sp-icon {
 
 .info-artice-right {
     float: left;
-    margin-left: 32px;
-    margin-top: 10px;
+    margin-left:20px;
 }
 
 .info-artice-name {
@@ -960,10 +981,10 @@ div.overlay-login {
 {
     position:relative;
 }
-/*.wrap-keeng-video
+.wrap-keeng-video
 {
     overflow:hidden;
-}*/
+}
 .video-form-other .kv-info
 {
     position:relative;
@@ -1132,7 +1153,7 @@ div.overlay-login {
 }
 .csk-item .csk-lnk-img img
 {
-        display: block;
+   display: block;
     width: 100%;
 }
 .csk-info .csk-info-h3
@@ -1143,4 +1164,56 @@ div.overlay-login {
 {
     font-size:16px;
     font-weight: normal;
+}
+
+/*-------------------------Thông tin ca sĩ----------------------------*/
+.keeng-info-artice .kdn-social
+{
+    border-bottom:1px solid #dcdcdc;
+    padding:0 10px 15px;
+    margin:0 10px 15px;
+}
+.wrap-info-artice
+{
+    overflow:hidden;
+    margin-bottom:20px;
+    padding:0 10px;
+}
+.info-artice-img
+{
+    float:left;
+}
+.info-artice-img img
+{
+    height:155px;
+}
+.info-artice-right .info-artice-name
+{
+    font-size:17px;
+    margin-bottom:20px;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+}
+.kv-info-p .kv-info-singer
+{
+    color:#9e9e9e;
+    font-size:13px;
+        margin-right: 5px;
+}
+.wrap-collection-album
+{
+    overflow:hidden;
+}
+/*.audio-content .ka-lnk img
+{
+    display:block;
+    height:35px;
+    width:35px;
+}*/
+.audio-content .ka-info .ka-info-h3
+{
+        line-height: 16px;
+    padding-right: 33px;
+    padding-bottom: 1px;
 }

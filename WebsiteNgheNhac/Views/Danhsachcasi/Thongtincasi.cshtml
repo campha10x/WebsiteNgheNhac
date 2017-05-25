@@ -1,0 +1,175 @@
+﻿
+@{
+    ViewBag.Title = "Thongtincasi";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var GetCaSi = (List<Model.EF.tbl_CaSi>)ViewBag.GetCaSi;
+    var GetListBH = (List<Model.EF.tbl_BaiHat>)ViewBag.GetListBaiHat;
+   
+}
+<div id="fb-root"></div>
+<script>
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.9&appId=444531092551120";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script>
+<div class="container">
+    <div class="col-md-8">
+        <div class="keeng-info-artice">
+            <h2 class="keeng-title-h2">
+                <a href="#" style="text-transform:uppercase">@GetCaSi[0].NgheDanh</a>
+            </h2>
+            <div class="kdn-social">
+                <div class="fb-like" data-href="https://www.facebook.com/search/top/?q=keeng.vn" data-layout="button" data-action="like" data-size="small" data-show-faces="false" data-share="true"></div>
+            </div>
+            <div class="wrap-info-artice">
+                <a class="info-artice-img">
+                    <img src="@GetCaSi[0].urlImage" />
+                </a>
+                <div class="info-artice-right show_content" style="margin-left: 30px;">
+                    <h3 class="info-artice-name">
+                        <a href="#">Nghệ danh: 
+                            <span>@GetCaSi[0].NgheDanh</span>
+                        </a>
+                    </h3>
+                    <div class="info-artice-content info-show">
+                        <p>Hằng BingBoong từng dành được các giải thưởng:</p>
+                        <p>Hằng BingBoong từng dành được các giải thưởng:</p>
+                        <p>Hằng BingBoong từng dành được các giải thưởng:</p>
+                        <p>Hằng BingBoong từng dành được các giải thưởng:</p>
+                        <p>Hằng BingBoong từng dành được các giải thưởng:</p>
+                        <p>Hằng BingBoong từng dành được các giải thưởng:</p>
+                    </div>
+                    <p class="view-more-content">
+                        <a href="#"><< Rút gọn</a>
+                    </p>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <!-- Box video -->
+            <div class="keeng-video-collect video-form-other" id="videoSameSinger">
+                <h2 class="keeng-title-h2">
+                    <a href="#">VIDEO</a>
+                </h2>
+                <div class="wrap-keeng-video">
+                    @foreach (var item in (List< Model.ViewModel.Video_CaSiModel>)@ViewBag.ListVideo)
+                    {
+                        <div style="height: 200px;  " id="kv-content-240171" class="col-sm-4 keeng-video">
+                            <div class="kv-content">
+                                <a class="kv-lnk" href="#">
+                                    <img src="@item.urlImage" width="100%" />
+                                    <span class="kv-sp-icon">
+                                        <img src="~/asset/client/images/ChiTietVideo/ver3_08.png" height="59" />
+                                    </span>
+                                </a>
+                                <div class="kv-info">
+                                    <h3 class="kv-info-h3">
+                                        <a href="#">@item.Ten_Video</a>
+                                    </h3>
+                                    <p class="kv-info-p">
+                                        <a class="kv-info-singer">@item.NgheDanh</a>
+                                        <span class="kv-info-view">
+                                            <img src="~/asset/client/images/ChiTietVideo/ver3_09_c.png" height="10" /> @item.LuotXem
+                                        </span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    @*<div style="height: 200px;  " id="kv-content-240171" class="col-sm-4 keeng-video">
+                        <div class="kv-content">
+                            <a class="kv-lnk" href="#">
+                                <img src="~/asset/client/images/ChiTietVideo/EYqPh5iG7tY0vSvGFHMJ58bcd4ae2ce1b.jpg" width="100%" />
+                                <span class="kv-sp-icon">
+                                    <img src="~/asset/client/images/ChiTietVideo/ver3_08.png" height="59" />
+                                </span>
+                            </a>
+                            <div class="kv-info">
+                                <h3 class="kv-info-h3">
+                                    <a href="#">Não cá vàng</a>
+                                </h3>
+                                <p class="kv-info-p">
+                                    <a class="kv-info-singer">Hằng BingBoong ft Andree</a>
+                                    <span class="kv-info-view">
+                                        <img src="~/asset/client/images/ChiTietVideo/ver3_09_c.png" height="10" /> 185.294
+                                    </span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>*@
+                </div>
+                <p class="more-keeng-view p-view-all">
+                    <a class="lnk-view-all">
+                        <img src="~/asset/client/images/BaiHat/ver3_12.png" height="7" />
+                    </a>
+                </p>
+               
+            </div>
+            <!--Box bai hat ca si-->
+            <div class="collection-keeng-album">
+                <h2 class="keeng-title-h2">
+                    <a href="#">BÀI HÁT CỦA @GetCaSi[0].NgheDanh</a>
+                </h2>
+                @foreach (var item in GetListBH)
+                {
+                    <div class="wrap-collection-album">
+                        <div class="col-sm-6 keeng-album">
+                            <div class="ka-content audio-content">
+                                <a class="ka-lnk">
+                                    <img src="@item.url_Image" />
+                                </a>
+                            </div>
+                            <div class="ka-info" style="top: -20px;left: 75px;">
+                                <h3 class="ka-info-h3">
+                                    <a title="Lối Vắng" href="#">@item.TenBaiHat</a>
+                                </h3>
+                                <p class="ka-info-singer">
+                                    <a href="#">@GetCaSi[0].NgheDanh</a>
+                                    <span class="ka-info-view">
+                                        <img src="~/asset/client/images/TrangChu/ver3_09_b.png" height="10" /> @item.LuotNghe
+                                    </span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                }
+                @*<div class="wrap-collection-album">
+                    <div class="col-sm-6 keeng-album">
+                        <div class="ka-content audio-content">
+                            <a class="ka-lnk">
+                                <img src="~/asset/client/images/BaiHat/XGFAXKss0J5wHQDDbNtf591129e1f17e7_103_103.jpg" />
+                            </a>
+                        </div>
+                        <div class="ka-info" style="top: -20px;left: 75px;">
+                            <h3 class="ka-info-h3">
+                                <a title="Lối Vắng" href="#">Lối Vắng</a>
+                            </h3>
+                            <p class="ka-info-singer">
+                                <a href="#">Hằng BingBoong ft Andree</a>
+                                <span class="ka-info-view">
+                                    <img src="~/asset/client/images/TrangChu/ver3_09_b.png" height="10" /> 2.168.036
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                </div>*@
+                <p class="more-keeng-view p-view-all">
+                    <a class="lnk-view-all">
+                        <img src="~/asset/client/images/BaiHat/ver3_12.png" height="7" />
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+<script type="text/javascript">
+    $(".view-more-content a").click(function () {
+        $(".info-show p:gt(2)").toggle();
+        if ( $('.info-show p:gt(2):hidden').css('display') == 'none' ) 
+            $(".view-more-content a").text("Xem toàn bộ >>");
+        else
+            $(".view-more-content a").text("<< Rút gọn");
+    })
+</script>

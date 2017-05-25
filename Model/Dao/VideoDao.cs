@@ -19,6 +19,10 @@ namespace Model.Dao
         {
             return db.tbl_Video.Where(e => e.Active == true).Take(top).ToList();
         }
+        public List<tbl_Video> GetListVideo(long Id_Casi)
+        {
+            return db.tbl_Video.Where(e => e.Id_CaSi == Id_Casi && e.Active == true).ToList();
+        }
         //Admin
         public IEnumerable<tbl_Video> ListAllPaging(string searchString, int page, int pageSize)
         {

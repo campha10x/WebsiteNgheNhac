@@ -16,12 +16,12 @@
                 @foreach (var item in ListTinTuc)
                 {
                     <div class="show-blog-item">
-                        <a class="blog-lnk-img">
+                        <a class="blog-lnk-img" href="@Url.Action("Index", "tin-tuc", new { @Id=@item.Id})">
                             <img src="@item.urlHinhAnh" />
                         </a>
                         <div class="blog-info">
                             <h3 class="blog-info-h3">
-                                <a href="#">@item.TieuDe</a>
+                                <a href="@Url.Action("Index", "tin-tuc", new { @Id=@item.Id})">@item.TieuDe</a>
                             </h3>
                             <p class="blog-info-p">
                               @Html.Raw(@item.TomTat.Length>300? item.TomTat.Substring(0, 300) + "<text>...</text>" : item.TomTat)

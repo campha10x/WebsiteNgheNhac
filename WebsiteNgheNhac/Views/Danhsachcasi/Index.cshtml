@@ -1,7 +1,8 @@
-﻿
+﻿@using Model;
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var lst_Casi = (List<Model.EF.tbl_CaSi>)ViewBag.ListCaSi;
 }
 
 <div class="container">
@@ -23,7 +24,20 @@
                 </p>
             </div>
             <div class="row csk-wrap">
-                <div class="col-xs-6 col-sm-3 csk-item">
+                @foreach (var item in lst_Casi)
+                {
+                    <div class="col-xs-6 col-sm-3 csk-item">
+                        <a class="csk-lnk-img" href="../Danhsachcasi/Thongtincasi/@item.Id">
+                            <img src="@item.urlImage" />
+                        </a>
+                        <div class="csk-info">
+                            <h3 class="csk-info-h3">
+                                <a href="../Danhsachcasi/Thongtincasi/@item.Id">@item.NgheDanh</a>
+                            </h3>
+                        </div>
+                    </div>
+                }
+                @*<div class="col-xs-6 col-sm-3 csk-item">
                     <a class="csk-lnk-img" href="#">
                         <img src="~/asset/client/images/Casi/o19hlrrE5HXVq6EdsqnA59159687abe74_310_310.jpg" />
                     </a>
@@ -32,49 +46,9 @@
                             <a href="#">Hằng BingBoong</a>
                         </h3>
                     </div>
-                </div>
-                <div class="col-xs-6 col-sm-3 csk-item">
-                    <a class="csk-lnk-img" href="#">
-                        <img src="~/asset/client/images/Casi/o19hlrrE5HXVq6EdsqnA59159687abe74_310_310.jpg" />
-                    </a>
-                    <div class="csk-info">
-                        <h3 class="csk-info-h3">
-                            <a href="#">Hằng BingBoong</a>
-                        </h3>
-                    </div>
-                </div>
-                <div class="col-xs-6 col-sm-3 csk-item">
-                    <a class="csk-lnk-img" href="#">
-                        <img src="~/asset/client/images/Casi/o19hlrrE5HXVq6EdsqnA59159687abe74_310_310.jpg" />
-                    </a>
-                    <div class="csk-info">
-                        <h3 class="csk-info-h3">
-                            <a href="#">Hằng BingBoong</a>
-                        </h3>
-                    </div>
-                </div>
-                <div class="col-xs-6 col-sm-3 csk-item">
-                    <a class="csk-lnk-img" href="#">
-                        <img src="~/asset/client/images/Casi/o19hlrrE5HXVq6EdsqnA59159687abe74_310_310.jpg" />
-                    </a>
-                    <div class="csk-info">
-                        <h3 class="csk-info-h3">
-                            <a href="#">Hằng BingBoong</a>
-                        </h3>
-                    </div>
-                </div>
-                <div class="col-xs-6 col-sm-3 csk-item">
-                    <a class="csk-lnk-img" href="#">
-                        <img src="~/asset/client/images/Casi/o19hlrrE5HXVq6EdsqnA59159687abe74_310_310.jpg" />
-                    </a>
-                    <div class="csk-info">
-                        <h3 class="csk-info-h3">
-                            <a href="#">Hằng BingBoong</a>
-                        </h3>
-                    </div>
-                </div>
+                </div>*@
+               
             </div>
         </div>
-        
     </div>
 

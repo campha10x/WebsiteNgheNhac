@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using PagedList;
+using Model.ViewModel;
 namespace Model.Dao
 {
     public class BaiHatDao
@@ -13,6 +14,10 @@ namespace Model.Dao
         public BaiHatDao()
         {
             db = new WebsiteNgheNhacDbContext();
+        }
+        public List<tbl_BaiHat> GetListBH(long Id)
+        {
+            return db.tbl_BaiHat.Where(e => e.Id_CaSi == Id && e.Active == true).ToList();
         }
         public void Update_LuotNghe(long id)
         {
@@ -26,11 +31,15 @@ namespace Model.Dao
             obj.LuotNghe = obj.LuotNghe + 1;
              db.SaveChanges();
         }
-        public List<string> ListName(string keyword)
+        //public List<string> ListName(string keyword)
+        //{
+        //    return db.tbl_BaiHat.Where(x => x.TenBaiHat.Contains(keyword)).SelectMany(x => new[]{ x.TenBaiHat,x.url_Image}).ToList();
+        //}
+        public List<tbl_BaiHat> ListName(string keyword)
         {
-            return db.tbl_BaiHat.Where(x => x.TenBaiHat.Contains(keyword)).Select(x => x.TenBaiHat).ToList();
+            db.Configuration.ProxyCreationEnabled = false;
+            return db.tbl_BaiHat.Where(x => x.TenBaiHat.Contains(keyword)).ToList();
         }
-
         //Admin
         public IEnumerable<tbl_BaiHat> ListAllPaging(string searchString, int page, int pageSize)
         {

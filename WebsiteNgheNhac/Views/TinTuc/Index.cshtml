@@ -5,14 +5,11 @@
     List<Model.EF.tbl_TinTuc> getTinTuc = (List<Model.EF.tbl_TinTuc>)ViewBag.GetTinTuc;
     List<Model.EF.tbl_TinTuc> ListTinTuc = (List<Model.EF.tbl_TinTuc>)ViewBag.ListTinTuc; 
 }
-
-
 <div class="container">
     <div class="col-md-8">
         <div class="keeng-detail-news">
             <h1 class="kdn-h1">
                 @Html.Raw(@getTinTuc[0].TieuDe)
-                @*Tháng 5 về, em hãy cứ rũ bỏ nỗi buồn mà thảnh thơi đi tìm hạnh phúc mới*@
             </h1>
             <div class="kdn-social">
                 <div class="kdn-fb">
@@ -21,13 +18,11 @@
             </div>
             <div class="kdn-content">
                 <p>
-                   @* <strong>Đã đến lúc gác lại chuyện xưa, trên đường đời trải đầy những nụ hoa, luôn có một nụ hoa nào đó thuộc về em. Điều quan trọng là em cần bước tiếp, đừng từ bỏ hạnh phúc phía trước của mình chỉ để ngoái nhìn những ngày xa…</strong>*@
                     <strong>@Html.Raw(@getTinTuc[0].TomTat)</strong>
                 </p>
                 <p>
                   <audio controls style="width:100%;">
                       <source src="../@getTinTuc[0].Url_BaiHat" type="audio/mp3" />
-                      @*<source src="/asset/client/Audio_Video/Audio/Ta-Con-Thuoc-Ve-Nhau-Huong-Tram.mp3" type="audio/mp3"/>*@
                   </audio>
                 </p>
                 <p style="text-align: right;">

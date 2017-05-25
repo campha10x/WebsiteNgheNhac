@@ -18,5 +18,9 @@ namespace Model.Dao
         {
             return db.tbl_CaSi.Where(e => e.Active == true).OrderBy(e => e.Id).ToList();
         }
+        public List<tbl_CaSi> GetByList(long id)
+        {
+            return db.tbl_CaSi.Where(e => e.Id == id && e.Active == true).ToList();
+        }
     }
 }

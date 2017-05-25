@@ -374,6 +374,7 @@
     <Content Include="asset\admin\images\1494254611_plus.png" />
     <Content Include="asset\admin\images\1494254785_compose.png" />
     <Content Include="asset\admin\images\1494254813_Cancel.png" />
+    <Content Include="asset\admin\images\split.png" />
     <Content Include="asset\admin\js\controller\baihatcontroller.js" />
     <Content Include="asset\admin\js\controller\nhanviencontroller.js" />
     <Content Include="asset\admin\js\controller\tintuccontroller.js" />
@@ -1444,12 +1445,7 @@
     <Content Include="asset\admin\vendor\raphael\raphael.js" />
     <Content Include="asset\admin\vendor\raphael\raphael.min.js" />
     <Content Include="asset\client\Audio_Video\Audio\BaiHat\Nhu-Ngay-Hom-Qua-Son-Tung-M-TP.mp3" />
-    <Content Include="asset\client\Audio_Video\Audio\Noi-Nay-Co-Anh-Son-Tung-M-TP.mp3" />
-    <Content Include="asset\client\Audio_Video\Audio\Ta-Con-Thuoc-Ve-Nhau-Huong-Tram.mp3" />
     <Content Include="asset\client\Audio_Video\Audio\TinTuc\Nhu-Ngay-Hom-Qua-Son-Tung-M-TP.mp3" />
-    <Content Include="asset\client\Audio_Video\Audio\Tu-Giay-Phut-Dau-Hari-Won-Tran-Thanh.mp3" />
-    <Content Include="asset\client\Audio_Video\Audio\Xin-Anh-Dung-Dong-Nhi.mp3" />
-    <Content Include="asset\client\Audio_Video\Audio\You-Far-Away-The-Men.mp3" />
     <Content Include="asset\client\Audio_Video\Video\Em Chưa 18 - WILL - LOU HOÀNG - KAITY NGUYỄN - Em Chưa 18 OST - Official Lyric Video.mp4" />
     <Content Include="asset\client\Audio_Video\Video\NÃO CÁ VÀNG - ONLY C ft. LOU HOÀNG - OFFICIAL MV 2017.mp4" />
     <Content Include="asset\client\css\bootrap-social.css" />
@@ -1477,6 +1473,7 @@
     <Content Include="asset\client\images\BaiHat\sr2knbqtet402W0CEzc158c63dd8d38e0_103_103.jpg" />
     <Content Include="asset\client\images\BaiHat\ver3_09_b.png" />
     <Content Include="asset\client\images\BaiHat\ver3_12.png" />
+    <Content Include="asset\client\images\BaiHat\XGFAXKss0J5wHQDDbNtf591129e1f17e7_103_103.jpg" />
     <Content Include="asset\client\images\Casi\KvH6PuFcBo39qpjugbL858d63bd12644e_310_310.jpg" />
     <Content Include="asset\client\images\Casi\o19hlrrE5HXVq6EdsqnA59159687abe74_310_310.jpg" />
     <Content Include="asset\client\images\Casi\PMdMSbVDqxjkYXuLgpSR59127d7bf2e8a_310_310.jpg" />
@@ -1484,6 +1481,7 @@
     <Content Include="asset\client\images\ChiTietVideo\4NgiEQ3CaJsjWUTUKdRp58e1ee9f91279.jpg" />
     <Content Include="asset\client\images\ChiTietVideo\auto_active.png" />
     <Content Include="asset\client\images\ChiTietVideo\EYqPh5iG7tY0vSvGFHMJ58bcd4ae2ce1b.jpg" />
+    <Content Include="asset\client\images\ChiTietVideo\ver3_08.png" />
     <Content Include="asset\client\images\ChiTietVideo\ver3_09_c.png" />
     <Content Include="asset\client\images\Quang Cao\AhIpWhYD9ejVheVJABwQ59068e5e11375.jpg" />
     <Content Include="asset\client\images\Quang Cao\Xeaa2bGTjVzv5qIEofyP58fb20e4ea1af_147_83.jpg" />
@@ -1653,6 +1651,8 @@
     <Content Include="asset\admin\vendor\font-awesome\scss\_spinning.scss" />
     <Content Include="asset\admin\vendor\font-awesome\scss\_stacked.scss" />
     <Content Include="asset\admin\vendor\font-awesome\scss\_variables.scss" />
+    <Content Include="asset\client\fontweb\74-14562-timesbi.ttf" />
+    <Content Include="asset\client\fontweb\arial.ttf" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -1699,6 +1699,7 @@
     <Content Include="Views\TabBaiHat\Index.cshtml" />
     <Content Include="Views\TinTuc\ListTinTuc.cshtml" />
     <Content Include="Views\Danhsachcasi\Index.cshtml" />
+    <Content Include="Views\Danhsachcasi\Thongtincasi.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

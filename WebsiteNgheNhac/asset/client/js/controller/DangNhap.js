@@ -15,16 +15,13 @@
             data: { 'Username': username, 'Password': password, 'RememberPass': remember },
             success:function(res)
             {
-                debugger;
                 if (res.status == false)
                 {
                     $('#lblError').text('Tài khoản đăng nhập không đúng!!');
                 }
                 else
                 {
-                   
                     $('.sign-in').html('Đăng kí');
-                   
                     window.location.href = '/TrangChu/Index';
                 }
             }

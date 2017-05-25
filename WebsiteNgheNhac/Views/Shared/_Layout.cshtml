@@ -49,6 +49,12 @@
 
     <script>
         $(document).ready(function () {
+
+            $(".menu a").click(function () {
+                //alert(location.pathname);
+                //localStorage.setItem('_NSCaseId', nsId);
+                $(this).addClass('active');
+            });
             $("#btnlinkRegister").click(function () {
                 $(".overlay-signin").fadeToggle("fast");
             });
@@ -64,19 +70,7 @@
                     }
                 })
             });
-                    @*$(".overlayLink-signin").click(function (event) {
-                        event.preventDefault();
-                       
-                        var checkdangnhap='@TempData["CheckDangNhap"]';
-                        if(checkdangnhap==='')
-                        {
-                            $(".overlay-signin").fadeToggle("fast");
-                        }
-                        if (checkdangnhap !== '') {
-                           
-                        }
 
-                    });*@
                     $(".close-signin").click(function () {
                         $(".overlay-signin").fadeToggle("fast");
                     });
@@ -99,7 +93,6 @@
                 </div>
                 <div class="col-md-6">
                     <div class="box_search">
-                        @*autocomplete="on"*@
                         <form id="formSearchQuick"  action="/tim-kiem/Search" method="get">
                             <input id="txtSearch" type="text" name="keyword" maxlength="45" placeholder="Từ khóa tìm kiếm.." >
                             <button class="search-keeng-btn">
@@ -110,7 +103,6 @@
                 </div>
                 <div class="col-md-3 login_container">
                     <div style="margin-top:35px;">
-                        @*@RenderPage("Dangki.cshtml", new Model.EF.tbl_NguoiDung())*@
                         @Html.Partial("~/Views/Shared/DangKi.cshtml")
                         @Html.Partial("~/Views/Shared/Dangnhap.cshtml")
                     </div>
@@ -134,20 +126,6 @@
                 speed: 500,
                 dots: true
             });
-            //$("#txtSearch").on("keydown", function (e) {
-            //    if (e.which === 13) {
-            //       window.location.href = document.location.host + '/tim-kiem/Search-' + encodeURI($(this).val());
-            //    }
-            //});
-
-            @*if('@ViewData["CheckDangNhap"]' == "")
-            {
-                $('.sign-in').html('Đăng kí')
-            }
-            else
-            {
-                    $('.sign-in').html('Thoát')
-            }*@
         })
             
         </script>
